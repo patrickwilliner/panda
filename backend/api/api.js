@@ -79,6 +79,7 @@ module.exports = function(models) {
             var link = new Link(req.body);
 
             setTimestamps(link);
+            link.url = normalizeUrl(link.url);
 
             link.save(function(err) {
                 if (err) {
@@ -131,8 +132,9 @@ module.exports = function(models) {
                 });
 
                 res2.on('end', function () {
-                    var regex = /<title>(.*)<\/title>/gi;
-                    res.json(regex.exec(body)[1]);
+                    var regex = /<title>((.|\n|\r)*)<\/title>/gi;
+                    var result = regex.exec(body);
+                    return res.json(result && result[1] ? result[1].trim() : '-');
                 });
             }).on('error', function(e) {
                 console.log(e);
