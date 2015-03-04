@@ -1,0 +1,24 @@
+<div class="link-item" ng-repeat="link in selection.links" ng-click="select(link)" ng-class="{selected : selection.link._id === link._id}">
+	<div>
+		<a target="_blank" href="{{link.url}}">
+    	<span class="caption">{{link.label}}</span>
+  	</a>
+    <small>
+      <span class="link-domain">{{link.url | domain}}</span>
+    </small>
+  </div>
+
+	<div>
+		<div class="link-tags">
+			<ul>
+				<li ng-repeat="tag in link.tags">{{tag}}</li>
+			</ul>
+		</div>
+
+		<div class="link-date" title="{{link.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}">
+			<span>{{link.createdAt | date:'yyyy-MM-dd'}}</span>
+		</div>
+	</div>
+
+	<div style="clear: both;"></div>
+</div>

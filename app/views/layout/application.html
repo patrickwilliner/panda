@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="pdApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Panda Link Organiser</title>
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body ng-controller="ApplicationController">
+  <div ng-include src="'views/common/_navigation.html'"></div>
+  
+  <div ng-view></div>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="services/UserService.js"></script>
+  <script src="services/BundleService.js"></script>
+  <script src="services/LinkService.js"></script>
+  <script src="services/TagService.js"></script>
+  <script src="controllers/ApplicationController.js"></script>
+  <script src="controllers/LinkController.js"></script>
+  <script src="controllers/ConfigurationController.js"></script>
+  <script src="filters/domainFilter.js"></script>
+  <script src="directives/bundleDirective.js"></script>
+  <script src="directives/dialogDirective.js"></script>
+</body>
+</html>

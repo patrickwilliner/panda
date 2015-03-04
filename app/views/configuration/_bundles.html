@@ -1,0 +1,16 @@
+<table class="table table-striped">
+	<caption>Listing {{bundles.length}} bundles</caption>
+	<thead>
+		<tr>
+	  	<th width="1%">Order</th>
+	  	<th>Label</th>
+	  </tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="bundle in bundles">
+	  	<td>{{bundle.order}}</td>
+	  	<td>{{bundle.label}}</td>
+	  </tr>
+	</tbody>
+</table>

@@ -1,0 +1,41 @@
+.logo {
+	width: 32px;
+	height: 32px;
+	display: inline !important;
+	vertical-align: top;
+}
+
+.link-item {
+	padding: 6px;
+	background-color: #EEEEEE;
+	border-radius: 4px;
+	margin-bottom: 4px;
+}
+
+.link-item .caption {
+	font-size: 120%;
+}
+
+.link-tags ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.link-tags li {
+	float: left;
+	padding: 0 8px 0 0;
+	margin: 0;
+}
+
+.link-date {
+	float: right;
+}
+
+.toolbar {
+	margin-bottom: 10px;
+}
+
+.selected {
+	box-shadow: 0 0 4px #428bca;
+}

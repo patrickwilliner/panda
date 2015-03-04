@@ -1,0 +1,18 @@
+<table class="table table-striped">
+	<caption>Listing {{users.length}} users</caption>
+	<thead>
+		<tr>
+	  	<th>Login</th>
+	  	<th>Given Name</th>
+	  	<th>Family Name</th>
+	  </tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="user in users">
+	  	<td>{{user.login}}</td>
+	  	<td>{{user.givenName}}</td>
+	  	<td>{{user.familyName}}</td>
+	  </tr>
+	</tbody>
+</table>

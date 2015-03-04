@@ -1,0 +1,16 @@
+<span ng-include="'views/link/_toolbar.html'"></span>
+
+<div class="container">
+  <ul class="nav nav-pills nav-stacked col-md-2">
+  	<li ng-class="{active: bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles">
+  		<a href="" ng-click="setBundle(bundle)"><span ng-bind="bundle.label"></span></a>
+		</li>
+	</ul>
+	
+	<div class="col-md-10">
+		<pd-bundle></pd-bundle>
+	</div>
+</div>
+
+<pd-dialog dialog="newLinkDialog" form="form"></pd-dialog>
+<pd-dialog dialog="editLinkDialog" form="form"></pd-dialog>

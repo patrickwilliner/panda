@@ -1,0 +1,29 @@
+<!--<span ng-include="'views/configuration/_toolbar.html'"></span>-->
+
+<div class="container">
+  <ul class="nav nav-pills nav-stacked col-md-2">
+  	<li ng-class="{active: selection.tabItem === 'bundles'}">
+  		<a href="" ng-click="setTab('bundles')">Bundles</a>
+		</li>
+  	<li ng-class="{active: selection.tabItem === 'tags'}">
+  		<a href="" ng-click="setTab('tags')">Tags</a>
+		</li>
+		<li ng-class="{active: selection.tabItem === 'users'}">
+  		<a href="" ng-click="setTab('users')">Users</a>
+		</li>
+	</ul>
+	
+	<div class="col-md-10">
+		<div class="animate-switch-container" ng-switch on="selection.tabItem">
+      <div class="animate-switch" ng-switch-when="bundles">
+      	<span ng-include="'views/configuration/_bundles.html'"></span>
+      </div>
+      <div class="animate-switch" ng-switch-when="tags">
+				<span ng-include="'views/configuration/_tags.html'"></span>
+      </div>
+      <div class="animate-switch" ng-switch-when="users">
+				<span ng-include="'views/configuration/_users.html'"></span>
+      </div>
+  </div>
+	</div>
+</div>
