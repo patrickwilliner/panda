@@ -32,5 +32,17 @@
 	  	lastName: 'Williner',
 	  	firstName: 'Patrick'
 	  };
+
+	  $scope.keyListeners = [];
+
+	  $scope.registerKeyListener = function(listener) {
+	  	$scope.keyListeners.push(listener);
+	  };
+
+	  $scope.onKeyDown = function($event) {
+	  	$scope.keyListeners.forEach(function(listener) {
+	  		listener($event);
+	  	});
+	  };
   }]);
 })();

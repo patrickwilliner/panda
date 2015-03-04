@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
-<body ng-controller="ApplicationController">
+<body ng-controller="ApplicationController" ng-keydown="onKeyDown($event)">
   <div ng-include src="'views/common/_navigation.html'"></div>
   
   <div ng-view></div>

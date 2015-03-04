@@ -1,6 +1,9 @@
 (function() {
 	'use strict';
 	
+	var KEY_ARROW_UP = 38;
+	var KEY_ARROW_DOWN = 40;
+
 	var module = angular.module('pdLinkController', ['pdLinkService', 'pdBundleService', 'pdBundleDirective', 'pdDialogDirective', 'pdDomainFilter', 'pdTagService']);
 
 	module.controller('LinkController', ['$scope', '$http', 'Link', 'Bundle', 'Tag', function($scope, $http, Link, Bundle, Tag) {
@@ -132,5 +135,15 @@
 	  	submit: $scope.updateLink,
 	  	formId: 'editLinkForm'
 	  };	  
+
+	  $scope.registerKeyListener(function(e) {
+	  	if ($scope.selection.link) {
+		  	if (e.keyCode === KEY_ARROW_UP) {
+	        console.log('todo: implement arrow up');
+		  	} else if (e.keyCode === KEY_ARROW_DOWN) {
+	        console.log('todo: implement arrow down');
+		  	}
+		  }
+	  });
 	}]);
 })();
