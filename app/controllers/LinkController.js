@@ -1,12 +1,57 @@
 (function() {
 	'use strict';
 	
+	var KEY_ENTER = 13;
 	var KEY_ARROW_UP = 38;
 	var KEY_ARROW_DOWN = 40;
 
 	var module = angular.module('pdLinkController', ['pdLinkService', 'pdBundleService', 'pdBundleDirective', 'pdDialogDirective', 'pdDomainFilter', 'pdTagService']);
 
 	module.controller('LinkController', ['$scope', '$http', 'Link', 'Bundle', 'Tag', function($scope, $http, Link, Bundle, Tag) {
+		function selectPreviousLink() {
+			if ($scope.selection.links.length > 1) {
+				var previousLink = findPreviousLink($scope.selection.link);
+				$scope.select(previousLink);
+			}
+		}
+
+		function selectNextLink() {
+			if ($scope.selection.links.length > 1) {
+				var nextLink = findNextLink($scope.selection.link);
+				$scope.select(nextLink);
+			}
+		}
+
+		function findPreviousLink(link) {
+			var previous = $scope.selection.links[0];
+
+			for (var i = 1; i < $scope.selection.links.length; i++) {
+				if ($scope.selection.links[i]._id === $scope.selection.link._id) {
+					return previous;
+				} else {
+					previous = $scope.selection.links[i];
+				}
+			}
+
+			// default
+			return previous;
+		}
+
+		function findNextLink(link) {
+			var next = $scope.selection.links[$scope.selection.links.length - 1];
+
+			for (var i = $scope.selection.links.length - 2; i >= 0; i--) {
+				if ($scope.selection.links[i]._id === $scope.selection.link._id) {
+					return next;
+				} else {
+					next = $scope.selection.links[i];
+				}
+			}
+
+			// default
+			return next;
+		}
+
 		$scope.setBundle = function(bundle) {
 			$scope.select(null);
 			$scope.selection.bundle = bundle;
@@ -136,13 +181,18 @@
 	  	formId: 'editLinkForm'
 	  };	  
 
-	  $scope.registerKeyListener(function(e) {
+	  $scope.registerKeyListener(function(e) {	
 	  	if ($scope.selection.link) {
-		  	if (e.keyCode === KEY_ARROW_UP) {
-	        console.log('todo: implement arrow up');
-		  	} else if (e.keyCode === KEY_ARROW_DOWN) {
-	        console.log('todo: implement arrow down');
-		  	}
+	  		switch (e.keyCode) {
+	  			case KEY_ARROW_UP:
+	  				selectPreviousLink();
+	  				break;
+  				case KEY_ARROW_DOWN:
+  					selectNextLink();
+	  				break;
+	  			case KEY_ENTER:
+	  				console.log('todo: implement action for pressing enter key');
+	  		}
 		  }
 	  });
 	}]);
