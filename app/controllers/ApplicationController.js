@@ -57,5 +57,9 @@
 		$scope.search = function() {
 			$location.path('/links').search({search: $scope.searchText});
 		};
+
+		$scope.showPwDialog = function() {
+	  	$('#pwDialog').modal('show');
+	  };
   }]);
 })();
