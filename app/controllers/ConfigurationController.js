@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 	
-	var module = angular.module('pdConfigurationController', ['pdBundleService']);
+	var module = angular.module('pdConfigurationController', ['pdBundleService', 'pdUserService']);
 
-	module.controller('ConfigurationController', ['$scope', 'Bundle', function($scope, Bundle) {
+	module.controller('ConfigurationController', ['$scope', 'Bundle', 'User', function($scope, Bundle, User) {
 		$scope.setTab = function(identifier) {
 			$scope.selection.tabItem = identifier;
 		};
@@ -17,6 +17,9 @@
 	  });
 
 	  $scope.tags = [];
-	  $scope.users = [];
+
+	  User.query(function(data) {
+	  	$scope.users = data;
+	  });
 	}]);
 })();

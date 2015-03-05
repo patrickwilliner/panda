@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	var module = angular.module('pdApp', ['pdUserService', 'pdLinkController', 'pdConfigurationController', 'ngRoute']);
+	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'ngRoute']);
 
 	module.config(['$routeProvider',
 		function($routeProvider) {
@@ -26,7 +26,7 @@
 		}
 	]);
 
-	module.controller('ApplicationController', ['$scope', '$location', 'UserService', function($scope, $location, userService) {
+	module.controller('ApplicationController', ['$scope', '$location', function($scope, $location) {
 	  $scope.user = {
 	  	login: 'wipa',
 	  	lastName: 'Williner',

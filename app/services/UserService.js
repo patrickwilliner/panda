@@ -1,13 +1,9 @@
 (function() {
 	'use strict';
 
-	var module = angular.module('pdUserService', []);
+	var module = angular.module('pdUserService', ['ngResource']);
 
-	module.factory('UserService', [function (userService) {
-		return {
-			login: 'wipa',
-			firstName: 'Patrick',
-			lastName: 'Williner'
-		};
+	module.factory('User', ['$resource', function ($resource) {
+		return $resource('/api/users/:id');
 	}]);
 })();

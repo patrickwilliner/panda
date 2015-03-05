@@ -32,7 +32,7 @@ module.exports = function(models) {
     return {
         listUsers: function(req, res) {
             User.find(function(err, users) {
-                req.json(users);
+                res.json(users);
             });
         },
 
