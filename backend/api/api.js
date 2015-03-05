@@ -29,6 +29,49 @@ module.exports = function(models) {
         return normalized;
     }
 
+    function searchLinksByTag(tagLabel, res) {
+        Link.find({
+            tags: tagLabel
+        }).sort(
+            '-createdAt'
+        ).exec(function(err, links) {
+            if (err) {
+                console.log(err);
+                res.send(400);
+            }
+
+            res.json(links);
+        });
+    }
+
+    function searchLinksByText(searchText, res) {
+        Link.find({
+            $or: [{
+                label: {
+                    $regex: searchText,
+                    $options: 'is'
+                }},
+                {url: {
+                    $regex: searchText,
+                    $options: 'is'
+                }},
+                {tags: {
+                    $regex: searchText,
+                    $options: 'is'
+                }}
+            ]
+        }).sort(
+            '-createdAt'
+        ).exec(function(err, links) {
+            if (err) {
+                console.log(err);
+                res.send(400);
+            }
+
+            res.json(links);
+        });
+    }
+
     return {
         listUsers: function(req, res) {
             User.find(function(err, users) {
@@ -43,13 +86,19 @@ module.exports = function(models) {
         },
 
         listTags: function(req, res) {
-            Tag.find().sort('label').exec(function(err, tags) {
-                res.json(tags);
+            Link.find().distinct('tags').exec(function(err, tagLabels) {
+                if (err) {
+                    console.log(err);
+                    res.send(400);
+                } else {
+                    var tags = tagLabels.sort().map(function(tagLabel) {
+                        return {
+                            label: tagLabel
+                        };
+                    });
+                    res.json(tags);
+                }
             });
-        },
-
-        listTagsByPrefix: function(req, res) {
-            res.json({});
         },
 
         listLinks: function(req, res) {
@@ -82,32 +131,13 @@ module.exports = function(models) {
 
         findLinks: function(req, res) {
             var searchText = req.query.search;
+            var tag = req.query.tag;
 
-            Link.find({
-                $or: [{
-                    label: {
-                        $regex: searchText,
-                        $options: 'is'
-                    }},
-                    {url: {
-                        $regex: searchText,
-                        $options: 'is'
-                    }},
-                    {tags: {
-                        $regex: searchText,
-                        $options: 'is'
-                    }}
-                ]
-            }).sort(
-                '-createdAt'
-            ).exec(function(err, links) {
-                if (err) {
-                    console.log(err);
-                    res.send(400);
-                }
-
-                res.json(links);
-            });
+            if (tag) {
+                searchLinksByTag(tag, res);
+            } else {
+                searchLinksByText(searchText, res);
+            }
         },
 
         createLink: function(req, res) {

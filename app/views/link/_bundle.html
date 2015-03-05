@@ -11,7 +11,7 @@
 	<div>
 		<div class="link-tags">
 			<ul>
-				<li ng-repeat="tag in link.tags">{{tag}}</li>
+				<li ng-repeat="tag in link.tags"><a href="/links/?tag={{tag}}">{{tag}}</a></li>
 			</ul>
 		</div>
 

@@ -72,6 +72,14 @@
 				  error(function(data, status, headers, config) {
 				    console.log(data, status);
 			  });
+			} else if (bundle.isTag) {
+				$http.get('/api/links/search/?tag=' + bundle.tag).
+				  success(function(data, status, headers, config) {
+				  	$scope.selection.links = data;
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data, status);
+			  });
 			} else {
 				$http.get('/api/bundles/' + bundle._id + '/links').
 				  success(function(data, status, headers, config) {
@@ -96,7 +104,7 @@
 		};
 
 		$scope.enableToolNew = function() {
-			return $scope.selection.bundle && !$scope.selection.bundle.isSearch;
+			return $scope.selection.bundle && !$scope.selection.bundle.isSearch && !$scope.selection.bundle.isTag;
 		};
 
 		$scope.enableToolEdit = function() {
@@ -144,7 +152,6 @@
 
 		$scope.updateLink = function() {
 			transformTagString();
-			console.log($scope.form.tags);
 
 			$http({
           method: 'put',
@@ -187,6 +194,14 @@
 		  		label: 'Search Result',
 		  		isSearch: true,
 		  		searchText: $location.search().search
+		  	};
+
+		  	$scope.bundles.splice(0, 0, searchBundle);
+		  } else if ($location.search().hasOwnProperty('tag')) {
+		  	var searchBundle = {
+		  		label: 'Tag "' + $location.search().tag + '"',
+		  		isTag: true,
+		  		tag: $location.search().tag
 		  	};
 
 		  	$scope.bundles.splice(0, 0, searchBundle);

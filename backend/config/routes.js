@@ -61,12 +61,8 @@ module.exports = function(app, passport, models) {
         api.deleteLink(req, res);
     });
 
-    app.get('/api/tags/', function(req, res) {
+    app.get('/api/tags', function(req, res) {
         api.listTags(req, res);
-    });
-
-    app.get('/api/tags/prefixed', function(req, res) {
-        api.listTagsByPrefix(req, res);
     });
 
     app.get('/api/load_page_title', function(req, res) {
