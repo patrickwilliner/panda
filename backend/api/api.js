@@ -81,8 +81,6 @@ module.exports = function(models) {
             setTimestamps(link);
             link.url = normalizeUrl(link.url);
 
-            console.log('_', link.tags);
-
             link.save(function(err) {
                 if (err) {
                     console.log(err);
@@ -95,9 +93,11 @@ module.exports = function(models) {
 
         updateLink: function(req, res) {
             return Link.findById(req.params.id, function (err, link) {
+                setTimestamps(link);
+                link.url = normalizeUrl(req.body.url);
                 link.bundle = req.body.bundle;
                 link.label = req.body.label;
-                link.url = req.body.url;
+                link.tags = req.body.tags;
 
                 return link.save(function (err) {
                     if (err) {

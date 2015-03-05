@@ -52,6 +52,14 @@
 			return next;
 		}
 
+		function transformTagString() {
+			$scope.form.tags = $scope.form.tagString.split(',');
+
+			for (var i = 0; i < $scope.form.tags.length; i++) {
+				$scope.form.tags[i] = $scope.form.tags[i].trim();
+			}
+		}
+
 		$scope.setBundle = function(bundle) {
 			$scope.select(null);
 			$scope.selection.bundle = bundle;
@@ -93,7 +101,8 @@
 	  	$scope.form = {
 	  		bundle: $scope.selection.bundle._id,
 		  	url: '',
-		  	label: ''
+		  	label: '',
+		  	tagString: ''
 		  };
 		  
 	  	$('#' + $scope.newLinkDialog.id).modal('show');
@@ -103,13 +112,16 @@
 	  	$scope.form = {
 	  		bundle: $scope.selection.bundle._id,
 		  	url: $scope.selection.link.url,
-		  	label: $scope.selection.link.label
+		  	label: $scope.selection.link.label,
+		  	tagString: $scope.selection.link.tags.join(', ')
 		  };
 		  
 	  	$('#' + $scope.editLinkDialog.id).modal('show');
 	  };
 
 		$scope.createLink = function() {
+			transformTagString();
+			
 			$http({
           method: 'post',
           url: '/api/links',
@@ -121,6 +133,9 @@
 		};
 
 		$scope.updateLink = function() {
+			transformTagString();
+			console.log($scope.form.tags);
+
 			$http({
           method: 'put',
           url: '/api/links/' + $scope.selection.link._id,
