@@ -7,7 +7,7 @@
 
 	var module = angular.module('pdLinkController', ['pdLinkService', 'pdBundleService', 'pdBundleDirective', 'pdDialogDirective', 'pdDomainFilter', 'pdTagService']);
 
-	module.controller('LinkController', ['$scope', '$http', 'Link', 'Bundle', 'Tag', function($scope, $http, Link, Bundle, Tag) {
+	module.controller('LinkController', ['$scope', '$http', '$location', 'Link', 'Bundle', 'Tag', function($scope, $http, $location, Link, Bundle, Tag) {
 		function selectPreviousLink() {
 			if ($scope.selection.links.length > 1) {
 				var previousLink = findPreviousLink($scope.selection.link);
@@ -64,13 +64,23 @@
 			$scope.select(null);
 			$scope.selection.bundle = bundle;
 
-			$http.get('/api/bundles/' + bundle._id + '/links').
-			  success(function(data, status, headers, config) {
-			  	$scope.selection.links = data;
-			  }).
-			  error(function(data, status, headers, config) {
-			    console.log(data, status);
-		  });
+			if (bundle.isSearch) {
+				$http.get('/api/links/search/?search=' + bundle.searchText).
+				  success(function(data, status, headers, config) {
+				  	$scope.selection.links = data;
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data, status);
+			  });
+			} else {
+				$http.get('/api/bundles/' + bundle._id + '/links').
+				  success(function(data, status, headers, config) {
+				  	$scope.selection.links = data;
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data, status);
+			  });
+			}
 		};
 
 		$scope.select = function(link) {
@@ -86,7 +96,7 @@
 		};
 
 		$scope.enableToolNew = function() {
-			return $scope.selection.bundle;
+			return $scope.selection.bundle && !$scope.selection.bundle.isSearch;
 		};
 
 		$scope.enableToolEdit = function() {
@@ -172,8 +182,18 @@
 		Bundle.query(function(data) {
 	  	$scope.bundles = data;
 
-	  	if (data && data[0]) {
-	  		$scope.setBundle(data[0]);
+	  	if ($location.search().hasOwnProperty('search')) {
+	  		var searchBundle = {
+		  		label: 'Search Result',
+		  		isSearch: true,
+		  		searchText: $location.search().search
+		  	};
+
+		  	$scope.bundles.splice(0, 0, searchBundle);
+		  }
+
+		  if ($scope.bundles && $scope.bundles[0]) {
+	  		$scope.setBundle($scope.bundles[0]);
 	  	}
 	  });
 

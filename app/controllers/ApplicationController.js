@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'ngRoute']);
+	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'pdEnterDirective', 'ngRoute']);
 
 	module.config(['$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
@@ -24,6 +24,7 @@
 					redirectTo: '/'
 				});
 
+				// pretty urls - no hashs in url
 				$locationProvider.html5Mode(true);
 		}
 	]);
@@ -34,6 +35,8 @@
 	  	lastName: 'Williner',
 	  	firstName: 'Patrick'
 	  };
+
+	  $scope.searchText = '';
 
 	  $scope.keyListeners = [];
 
@@ -49,6 +52,10 @@
 
 	  $scope.getNavClass = function(path) {
     	return $location.path().indexOf(path) === 0 ? 'active' : '';
+		};
+
+		$scope.search = function() {
+			$location.path('/links').search({search: $scope.searchText});
 		};
   }]);
 })();

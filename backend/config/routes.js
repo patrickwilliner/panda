@@ -45,6 +45,10 @@ module.exports = function(app, passport, models) {
         api.listLinks(req, res);
     });
 
+    app.get('/api/links/search', function(req, res) {
+        api.findLinks(req, res);
+    });
+
     app.post('/api/links', function(req, res) {
         api.createLink(req, res);
     });

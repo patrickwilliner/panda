@@ -3,7 +3,9 @@
 <div class="container">
   <ul class="nav nav-pills nav-stacked col-md-2">
   	<li ng-class="{active: bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles">
-  		<a href="" ng-click="setBundle(bundle)"><span ng-bind="bundle.label"></span></a>
+  		<a href="" ng-click="setBundle(bundle)">
+  			<span ng-bind="bundle.label"></span>
+  		</a>
 		</li>
 	</ul>
 	

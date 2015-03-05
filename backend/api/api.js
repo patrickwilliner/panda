@@ -54,7 +54,12 @@ module.exports = function(models) {
 
         listLinks: function(req, res) {
             Link.find(function(err, links) {
-                res.json(links);
+                if (err) {
+                    console.log(err);
+                    res.send(400);
+                } else {
+                    res.json(links);
+                }
             });
         },
 
@@ -63,6 +68,36 @@ module.exports = function(models) {
 
             Link.find({
                 bundle: new ObjectId(bundleId)
+            }).sort(
+                '-createdAt'
+            ).exec(function(err, links) {
+                if (err) {
+                    console.log(err);
+                    res.send(400);
+                }
+
+                res.json(links);
+            });
+        },
+
+        findLinks: function(req, res) {
+            var searchText = req.query.search;
+
+            Link.find({
+                $or: [{
+                    label: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }},
+                    {url: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }},
+                    {tags: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }}
+                ]
             }).sort(
                 '-createdAt'
             ).exec(function(err, links) {
