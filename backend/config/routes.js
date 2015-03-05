@@ -12,11 +12,11 @@ module.exports = function(app, passport, models) {
     });
 
     app.get('/configuration', function(req, res){
-        res.render('configuration');
+        res.render('layout/application');
     });
 
     app.get('/about', function(req, res){
-        res.render('about');
+        res.render('layout/application');
     });
 
     app.get('/login', function(req, res) {
