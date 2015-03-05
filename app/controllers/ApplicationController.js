@@ -26,7 +26,7 @@
 		}
 	]);
 
-	module.controller('ApplicationController', ['$scope', 'UserService', function($scope, userService) {
+	module.controller('ApplicationController', ['$scope', '$location', 'UserService', function($scope, $location, userService) {
 	  $scope.user = {
 	  	login: 'wipa',
 	  	lastName: 'Williner',
@@ -44,5 +44,9 @@
 	  		listener($event);
 	  	});
 	  };
+
+	  $scope.getNavClass = function(path) {
+    	return $location.path().indexOf(path) === 0 ? 'active' : '';
+		};
   }]);
 })();

@@ -9,6 +9,7 @@ module.exports = function(connection) {
 	var linkSchema = new Schema({
 		label: String,
 		url: String,
+		tags: [String],
 		bundle: ObjectId,
 		createdAt: Date,
 		modifiedAt: Date

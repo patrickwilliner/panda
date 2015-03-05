@@ -81,6 +81,8 @@ module.exports = function(models) {
             setTimestamps(link);
             link.url = normalizeUrl(link.url);
 
+            console.log('_', link.tags);
+
             link.save(function(err) {
                 if (err) {
                     console.log(err);
