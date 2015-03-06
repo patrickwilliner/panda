@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'pdEnterDirective', 'ngRoute']);
+	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'pdEnterDirective', 'pdFlagIconDirective', 'ngRoute']);
 
 	module.config(['$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
