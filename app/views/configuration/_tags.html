@@ -3,13 +3,13 @@
 	<thead>
 		<tr>
 	  	<th>Label</th>
-	  	<th>Count</th>
+	  	<th>Links</th>
 	  </tr>
 	</thead>
 	
 	<tbody>
 		<tr ng-repeat="tag in tags">
-	  	<td>{{tag.label}}</td>
+	  	<td><a href="/links/?tag={{tag.label}}">{{tag.label}}</a></td>
 	  	<td>{{tag.count}}</td>
 	  </tr>
 	</tbody>

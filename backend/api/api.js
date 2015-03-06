@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = function(models) {
+    var http = require('follow-redirects').http;
     var ObjectId = require('mongoose').Types.ObjectId;
     var User = models.user;
     var Bundle = models.bundle;
     var Link = models.link;
     var Tag = models.tag;
-    var http = require('follow-redirects').http;
 
     function setTimestamps(object) {
         var date = new Date();
@@ -93,7 +93,8 @@ module.exports = function(models) {
                 } else {
                     var tags = tagLabels.sort().map(function(tagLabel) {
                         return {
-                            label: tagLabel
+                            label: tagLabel,
+                            count: 0
                         };
                     });
                     res.json(tags);
