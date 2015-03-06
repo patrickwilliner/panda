@@ -8,7 +8,8 @@ module.exports = function(connection) {
 
   var bundleSchema = new Schema({
       label: String,
-      owner: String
+      owner: String,
+      linkCount: Number
   });
 
   var Bundle = connection.model('Bundle', bundleSchema);

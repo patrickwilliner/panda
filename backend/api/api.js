@@ -81,7 +81,11 @@ module.exports = function(models) {
 
         listBundles: function(req, res) {
             Bundle.find().sort('order').exec(function(err, bundles) {
-                res.json(bundles);
+                var extendedBundles = bundles.map(function(bundle) {
+                    bundle.linkCount = -2;
+                    return bundle;
+                });
+                res.json(extendedBundles);
             });
         },
 
