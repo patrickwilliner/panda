@@ -1,15 +1,19 @@
+<span ng-include="'views/configuration/toolbar.html'"></span>
+
+<br />
+<br />
+
 <table class="table table-striped">
-	<caption>Listing {{bundles.length}} bundles</caption>
 	<thead>
 		<tr>
-	  	<th width="1%">Order</th>
+	  	<th width="1%">#</th>
 	  	<th>Label</th>
 	  	<th>Links</th>
 	  </tr>
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="bundle in bundles">
+		<tr ng-class="{info : bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles" ng-click="selectBundle(bundle)">
 	  	<td>{{bundle.order}}</td>
 	  	<td>{{bundle.label}}</td>
 	  	<td>{{bundle.linkCount}}</td>

@@ -90,6 +90,7 @@ module.exports = function(models) {
         },
 
         listTags: function(req, res) {
+            // Model.collection -> use native connection
             Link.collection.aggregate([
                 {$unwind: '$tags'},
                 {$group : {

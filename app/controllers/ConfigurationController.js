@@ -9,7 +9,32 @@
 		};
 
 		$scope.selection = {
-			tabItem: 'bundles'
+			tabItem: 'bundles',
+			bundle: null
+		};
+
+		$scope.selectBundle = function(bundle) {
+			$scope.selection.bundle = bundle;
+		};
+
+		$scope.enableToolNew = function() {
+			return true;
+		};
+
+		$scope.enableToolEdit = function() {
+			return $scope.selection.bundle;
+		};
+
+		$scope.enableToolDelete = function() {
+			return $scope.selection.bundle;
+		};
+
+		$scope.enableToolUp = function() {
+			return $scope.selection.bundle;
+		};
+
+		$scope.enableToolDown = function() {
+			return $scope.selection.bundle;
 		};
 
 		Bundle.query(function(data) {
