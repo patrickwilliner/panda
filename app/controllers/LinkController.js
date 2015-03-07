@@ -5,7 +5,7 @@
 	var KEY_ARROW_UP = 38;
 	var KEY_ARROW_DOWN = 40;
 
-	var module = angular.module('pdLinkController', ['pdLinkService', 'pdBundleService', 'pdBundleDirective', 'pdDialogDirective', 'pdDomainFilter', 'pdTagService']);
+	var module = angular.module('pdLinkController', ['pdLinkService', 'pdBundleService', 'pdBundleDirective', 'pdLinkDialogDirective', 'pdDomainFilter', 'pdTagService']);
 
 	module.controller('LinkController', ['$scope', '$http', '$location', 'Link', 'Bundle', 'Tag', function($scope, $http, $location, Link, Bundle, Tag) {
 		function selectPreviousLink() {

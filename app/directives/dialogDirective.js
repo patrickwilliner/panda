@@ -6,10 +6,11 @@
 	module.directive('pdDialog', [function () {
 		return {
 			restrict: 'E',
-			templateUrl: 'views/common/_dialog.html',
+			templateUrl: 'views/common/dialog.html',
 			scope: {
-				dialog: '=dialog',
-				form: '=form'
+				bodyUrl: '=bodyUrl',
+				footerUrl: '=footerUrl',
+				dialog: '=dialog'
 			}
 		};
 	}]);

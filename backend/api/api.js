@@ -2,6 +2,7 @@
 
 module.exports = function(models) {
     var http = require('follow-redirects').http;
+    var Promise = require("bluebird");
     var ObjectId = require('mongoose').Types.ObjectId;
     var User = models.user;
     var Bundle = models.bundle;
@@ -80,9 +81,11 @@ module.exports = function(models) {
         },
 
         listBundles: function(req, res) {
+            
+            
             Bundle.find().sort('order').exec(function(err, bundles) {
                 var extendedBundles = bundles.map(function(bundle) {
-                    bundle.linkCount = -2;
+                    bundle.linkCount = -3;
                     return bundle;
                 });
                 res.json(extendedBundles);

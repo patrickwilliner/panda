@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	
-	var module = angular.module('pdConfigurationController', ['pdBundleService', 'pdUserService']);
+	var module = angular.module('pdConfigurationController', ['pdBundleService', 'pdUserService', 'pdDialogDirective']);
 
 	module.controller('ConfigurationController', ['$scope', 'Bundle', 'User', 'Tag', function($scope, Bundle, User, Tag) {
 		$scope.setTab = function(identifier) {
@@ -14,7 +14,11 @@
 		};
 
 		$scope.selectBundle = function(bundle) {
-			$scope.selection.bundle = bundle;
+			if ($scope.selection.bundle && $scope.selection.bundle._id === bundle._id) {
+				$scope.selection.bundle = null;
+			} else {
+				$scope.selection.bundle = bundle;
+			}
 		};
 
 		$scope.enableToolNew = function() {
@@ -48,5 +52,16 @@
 	  Tag.query(function(data) {
 	  	$scope.tags = data;
 	  });
+
+	  $scope.newBundleDialog = {
+	  	body: 'views/configuration/bundleDialogBody.html',
+	  	footer: 'views/configuration/bundleDialogFooter.html',
+	  	id: 'newBundleDialog',
+	  	title: 'Create new bundle'
+	  };
+
+	  $scope.showNewBundleDialog = function() {
+	  	$('#' + $scope.newBundleDialog.id).modal('show');
+	  };
 	}]);
 })();

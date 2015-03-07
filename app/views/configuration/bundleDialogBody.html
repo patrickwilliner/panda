@@ -1,0 +1,8 @@
+<form id="{{dialog.formId}}" name="linkForm" novalidate>
+  <input type="hidden" value="{{form.bundle}}">
+  <div class="form-group" ng-class="{'has-error': linkForm.url.$dirty && linkForm.url.$invalid}">
+    <label for="label">Label</label>
+    <input type="text" class="form-control" id="label" name="label" ng-model="form.label" placeholder="Enter Label" required>
+    <span class="help-block" ng-show="linkForm.label.$dirty && linkForm.label.$error.required">Field must not be empty.</span>
+  </div>
+</form>
