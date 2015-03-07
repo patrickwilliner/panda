@@ -103,7 +103,7 @@ module.exports = function(models) {
                         $sum : 1
                     }
                 }},
-                {$sort: { tags: 1 } }
+                {$sort: { _id: 1 } }
             ], function(err, result) {
                 res.json(result);
             });
