@@ -90,19 +90,18 @@ module.exports = function(models) {
         },
 
         listTags: function(req, res) {
-            Link.find().distinct('tags').exec(function(err, tagLabels) {
-                if (err) {
-                    console.log(err);
-                    res.send(400);
-                } else {
-                    var tags = tagLabels.sort().map(function(tagLabel) {
-                        return {
-                            label: tagLabel,
-                            count: 0
-                        };
-                    });
-                    res.json(tags);
-                }
+            Link.collection.aggregate([
+                {$unwind: '$tags'},
+                {$group : {
+                    _id : '$tags',
+                    label : { $first: '$tags' },
+                    linkCount : {
+                        $sum : 1
+                    }
+                }},
+                {$sort: { tags: 1 } }
+            ], function(err, result) {
+                res.json(result);
             });
         },
 
