@@ -36,6 +36,7 @@
 	margin-bottom: 10px;
 }
 
-.selected {
-	box-shadow: 0 0 4px #428bca;
+table .selected {
+	background-color: #337ab7 !important;
+	color: white;
 }

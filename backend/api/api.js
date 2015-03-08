@@ -81,15 +81,35 @@ module.exports = function(models) {
         },
 
         listBundles: function(req, res) {
-            
-            
             Bundle.find().sort('order').exec(function(err, bundles) {
                 var extendedBundles = bundles.map(function(bundle) {
-                    bundle.linkCount = -3;
+                    bundle.linkCount = 3.4;
                     return bundle;
                 });
                 res.json(extendedBundles);
             });
+        },
+
+        createBundle: function(req, res) {
+            var bundle = new Bundle(req.body);
+            setTimestamps(bundle);
+
+            bundle.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.send(400);
+                } else {
+                    res.send(200);
+                }
+            });
+        },
+
+        updateBundle: function(req, res) {
+
+        },
+
+        deleteBundle: function(req, res) {
+
         },
 
         listTags: function(req, res) {

@@ -41,6 +41,18 @@ module.exports = function(app, passport, models) {
         api.findLinksByBundle(req, res);
     });
 
+    app.post('/api/bundles', function(req, res) {
+        api.createBundle(req, res);
+    });
+
+    app.put('/api/bundles/:id', function(req, res) {
+        api.updateBundle(req, res);
+    });
+
+    app.delete('/api/bundles/:id', function(req, res) {
+        api.deleteBundle(req, res);
+    });
+
     app.get('/api/links', function(req, res) {
         api.listLinks(req, res);
     });

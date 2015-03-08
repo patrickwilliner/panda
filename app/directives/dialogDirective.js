@@ -8,9 +8,8 @@
 			restrict: 'E',
 			templateUrl: 'views/common/dialog.html',
 			scope: {
-				bodyUrl: '=bodyUrl',
-				footerUrl: '=footerUrl',
-				dialog: '=dialog'
+				dialog: '=dialog',
+				form: '=form'
 			}
 		};
 	}]);

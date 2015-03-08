@@ -6,10 +6,10 @@
         <h4 class="modal-title">{{dialog.title}}</h4>
       </div>
       <div class="modal-body">
-        <span ng-include="'views/' + bodyUrl"></span>
+        <span ng-include="dialog.bodyUrl"></span>
       </div>
       <div class="modal-footer">
-        <span ng-include="'views/' + footerUrl"></span>
+        <span ng-include="dialog.footerUrl"></span>
       </div>
     </div>
   </div>

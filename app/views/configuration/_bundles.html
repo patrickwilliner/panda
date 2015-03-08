@@ -13,7 +13,7 @@
 	</thead>
 	
 	<tbody>
-		<tr ng-class="{info : bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles" ng-click="selectBundle(bundle)">
+		<tr ng-class="{selected : bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles" ng-click="selectBundle(bundle)">
 	  	<td>{{bundle.order}}</td>
 	  	<td>{{bundle.label}}</td>
 	  	<td>{{bundle.linkCount}}</td>
@@ -21,4 +21,5 @@
 	</tbody>
 </table>
 
-<pd-dialog dialog="newBundleDialog" body-url="'configuration/bundleDialogBody.html'" footer-url="'configuration/bundleDialogFooter.html'"></pd-dialog>
+<pd-dialog dialog="newBundleDialog" form="form"></pd-dialog>
+<pd-dialog dialog="editBundleDialog" form="form"></pd-dialog>

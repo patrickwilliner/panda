@@ -3,7 +3,27 @@
 	
 	var module = angular.module('pdConfigurationController', ['pdBundleService', 'pdUserService', 'pdDialogDirective']);
 
-	module.controller('ConfigurationController', ['$scope', 'Bundle', 'User', 'Tag', function($scope, Bundle, User, Tag) {
+	module.controller('ConfigurationController', ['$scope', '$http', 'Bundle', 'User', 'Tag', function($scope, $http, Bundle, User, Tag) {
+		function createBundle() {
+			$http({
+          method: 'post',
+          url: '/api/bundles',
+          data: $scope.form
+      }).success(function() {
+      	$('#' + $scope.newBundleDialog.id).modal('hide');
+      });
+		}
+
+		function updateBundle() {
+			$http({
+          method: 'put',
+          url: '/api/bundles/' + $scope.form._id,
+          data: $scope.form
+      }).success(function() {
+      	$('#' + $scope.newBundleDialog.id).modal('hide');
+      });
+		}
+
 		$scope.setTab = function(identifier) {
 			$scope.selection.tabItem = identifier;
 		};
@@ -34,11 +54,11 @@
 		};
 
 		$scope.enableToolUp = function() {
-			return $scope.selection.bundle;
+			return $scope.selection.bundle && $scope.selection.bundle._id !== $scope.bundles[0]._id;
 		};
 
 		$scope.enableToolDown = function() {
-			return $scope.selection.bundle;
+			return $scope.selection.bundle && $scope.selection.bundle._id !== $scope.bundles[$scope.bundles.length - 1]._id;
 		};
 
 		Bundle.query(function(data) {
@@ -54,14 +74,40 @@
 	  });
 
 	  $scope.newBundleDialog = {
-	  	body: 'views/configuration/bundleDialogBody.html',
-	  	footer: 'views/configuration/bundleDialogFooter.html',
+	  	bodyUrl: 'views/configuration/bundleDialogBody.html',
+	  	footerUrl: 'views/configuration/bundleDialogFooter.html',
 	  	id: 'newBundleDialog',
-	  	title: 'Create new bundle'
+	  	title: 'Create new bundle',
+	  	submit: function() {
+	  		createBundle();
+	  	}
+	  };
+
+	  $scope.editBundleDialog = {
+	  	bodyUrl: 'views/configuration/bundleDialogBody.html',
+	  	footerUrl: 'views/configuration/bundleDialogFooter.html',
+	  	id: 'editBundleDialog',
+	  	title: 'Edit bundle',
+	  	submit: function() {
+	  		updateBundle();
+	  	}
 	  };
 
 	  $scope.showNewBundleDialog = function() {
+	  	$scope.form = {
+		  	label: ''
+		  };
+
 	  	$('#' + $scope.newBundleDialog.id).modal('show');
+	  };
+
+	  $scope.showEditBundleDialog = function() {
+	  	$scope.form = {
+	  		_id: $scope.selection.bundle._id,
+		  	label: $scope.selection.bundle.label
+		  };
+
+	  	$('#' + $scope.editBundleDialog.id).modal('show');
 	  };
 	}]);
 })();
