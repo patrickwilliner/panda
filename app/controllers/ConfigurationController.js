@@ -11,6 +11,7 @@
           data: $scope.form
       }).success(function() {
       	$('#' + $scope.newBundleDialog.id).modal('hide');
+      	loadBundles();
       });
 		}
 
@@ -20,8 +21,27 @@
           url: '/api/bundles/' + $scope.form._id,
           data: $scope.form
       }).success(function() {
-      	$('#' + $scope.newBundleDialog.id).modal('hide');
+      	$('#' + $scope.editBundleDialog.id).modal('hide');
+      	loadBundles();
       });
+		}
+
+		function loadBundles() {
+			Bundle.query(function(data) {
+		  	$scope.bundles = data;
+		  });
+		}
+
+		function loadUsers() {
+			User.query(function(data) {
+		  	$scope.users = data;
+		  });
+		}
+
+		function loadTags() {
+			Tag.query(function(data) {
+		  	$scope.tags = data;
+		  });
 		}
 
 		$scope.setTab = function(identifier) {
@@ -61,17 +81,9 @@
 			return $scope.selection.bundle && $scope.selection.bundle._id !== $scope.bundles[$scope.bundles.length - 1]._id;
 		};
 
-		Bundle.query(function(data) {
-	  	$scope.bundles = data;
-	  });
-
-	  User.query(function(data) {
-	  	$scope.users = data;
-	  });
-
-	  Tag.query(function(data) {
-	  	$scope.tags = data;
-	  });
+		loadBundles($scope);
+		loadUsers();
+		loadTags();
 
 	  $scope.newBundleDialog = {
 	  	bodyUrl: 'views/configuration/bundleDialogBody.html',
@@ -117,7 +129,7 @@
           url: '/api/bundles/' + $scope.selection.bundle._id,
           data: $scope.form
       	}).success(function() {
-      		$scope.setBundle($scope.selection.bundle);
+      		loadBundles();
       	});
 			}
 	  };

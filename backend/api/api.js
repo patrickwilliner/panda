@@ -107,7 +107,7 @@ module.exports = function(models) {
         updateBundle: function(req, res) {
             return Bundle.findById(req.params.id, function (err, bundle) {
                 setTimestamps(bundle);
-                bundle.label = normalizeUrl(req.body.label);
+                bundle.label = req.body.label;
 
                 return bundle.save(function (err) {
                     if (err) {
