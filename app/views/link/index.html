@@ -5,6 +5,7 @@
   	<li ng-class="{active: bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles">
   		<a href="" ng-click="setBundle(bundle)">
   			<span ng-bind="bundle.label"></span>
+  			<span class="badge pull-right">{{bundle.linkCount}}</span>
   		</a>
 		</li>
 	</ul>

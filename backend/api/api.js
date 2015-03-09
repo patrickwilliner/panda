@@ -8,6 +8,8 @@ module.exports = function(models) {
     var Bundle = models.bundle;
     var Link = models.link;
 
+    Promise.promisifyAll(require('mongoose'));
+
     function setTimestamps(object) {
         var date = new Date();
 
@@ -37,7 +39,7 @@ module.exports = function(models) {
         ).exec(function(err, links) {
             if (err) {
                 console.log(err);
-                res.send(400);
+                res.sendStatus(400);
             }
 
             res.json(links);
@@ -65,7 +67,7 @@ module.exports = function(models) {
         ).exec(function(err, links) {
             if (err) {
                 console.log(err);
-                res.send(400);
+                res.sendStatus(400);
             }
 
             res.json(links);
@@ -82,7 +84,10 @@ module.exports = function(models) {
         listBundles: function(req, res) {
             Bundle.find().sort('order').exec(function(err, bundles) {
                 var extendedBundles = bundles.map(function(bundle) {
-                    bundle.linkCount = 3.4;
+                    Link.count({bundle: bundle}, function(err, count) {
+                        bundle.linkCount = count;
+                    })
+                    
                     return bundle;
                 });
                 res.json(extendedBundles);
@@ -99,9 +104,9 @@ module.exports = function(models) {
                 bundle.save(function(err) {
                     if (err) {
                         console.log(err);
-                        res.send(400);
+                        res.sendStatus(400);
                     } else {
-                        res.send(200);
+                        res.sendStatus(200);
                     }
                 });
             });            
@@ -115,7 +120,7 @@ module.exports = function(models) {
                 return bundle.save(function (err) {
                     if (err) {
                         console.log(err);
-                        res.send(400);
+                        res.sendStatus(400);
                     } else {
                         res.send(bundle);
                     }
@@ -128,9 +133,9 @@ module.exports = function(models) {
                 return bundle.remove(function (err) {
                     if (err) {
                         console.log(err);
-                        res.send(400);
+                        res.sendStatus(400);
                     } else {
-                        res.send(200);
+                        res.sendStatus(200);
                     }
                 });
             });
@@ -140,12 +145,12 @@ module.exports = function(models) {
             return Bundle.findById(req.params.id, function (err, bundle1) {
                 if (err) {
                     console.log(err);
-                    res.send(400);
+                    res.sendStatus(400);
                 } else {
                     return Bundle.findById(req.body.id, function (err, bundle2) {
                         if (err) {
                             console.log(err);
-                            res.send(400);
+                            res.sendStatus(400);
                         } else {
                             var temp = bundle1.order;
                             bundle1.order = bundle2.order;
@@ -154,14 +159,14 @@ module.exports = function(models) {
                             bundle1.save(function(err) {
                                 if (err) {
                                     console.log(err);
-                                    res.send(400);
+                                    res.sendStatus(400);
                                 } else {
                                     bundle2.save(function(err) {
                                         if (err) {
                                             console.log(err);
-                                            res.send(400);
+                                            res.sendStatus(400);
                                         } else {
-                                            res.send(200);
+                                            res.sendStatus(200);
                                         }
                                     });
                                 }
@@ -193,7 +198,7 @@ module.exports = function(models) {
             Link.find(function(err, links) {
                 if (err) {
                     console.log(err);
-                    res.send(400);
+                    res.sendStatus(400);
                 } else {
                     res.json(links);
                 }
@@ -210,7 +215,7 @@ module.exports = function(models) {
             ).exec(function(err, links) {
                 if (err) {
                     console.log(err);
-                    res.send(400);
+                    res.sendStatus(400);
                 }
 
                 res.json(links);
@@ -237,9 +242,9 @@ module.exports = function(models) {
             link.save(function(err) {
                 if (err) {
                     console.log(err);
-                    res.send(400);
+                    res.sendStatus(400);
                 } else {
-                    res.send(200);
+                    res.sendStatus(200);
                 }
             });
         },
@@ -255,9 +260,9 @@ module.exports = function(models) {
                 return link.save(function (err) {
                     if (err) {
                         console.log(err);
-                        res.send(400);
+                        res.sendStatus(400);
                     } else {
-                        res.send(link);
+                        res.sendStatus(200);
                     }
                 });
             });
@@ -268,9 +273,9 @@ module.exports = function(models) {
                 return link.remove(function (err) {
                     if (err) {
                         console.log(err);
-                        res.send(400);
+                        res.sendStatus(400);
                     } else {
-                        res.send(200);
+                        res.sendStatus(200);
                     }
                 });
             });
@@ -291,9 +296,9 @@ module.exports = function(models) {
                     var result = regex.exec(body);
                     return res.json(result && result[1] ? result[1].trim() : '-');
                 });
-            }).on('error', function(e) {
-                console.log(e);
-                res.json('');
+            }).on('error', function(err) {
+                console.log(err);
+                res.sendStatus(400);
             });
         }
     };
