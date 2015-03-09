@@ -82,15 +82,22 @@ module.exports = function(models) {
         },
 
         listBundles: function(req, res) {
-            Bundle.find().sort('order').exec(function(err, bundles) {
-                var extendedBundles = bundles.map(function(bundle) {
-                    Link.count({bundle: bundle}, function(err, count) {
+            var promises = [];
+            var extendedBundles = [];
+
+            Promise.resolve(Bundle.find().sort('order').execAsync().then(function(bundles) {
+                bundles.forEach(function(bundle) {
+                    promises.push(Link.countAsync({bundle: bundle._id}).then(function(count) {
                         bundle.linkCount = count;
-                    })
-                    
-                    return bundle;
+                        extendedBundles.push(bundle);
+                    }));
                 });
-                res.json(extendedBundles);
+            })).then(function() {
+                Promise.all(promises).then(function() {
+                    res.json(extendedBundles);
+                }).error(function() {
+                    res.sendStatus(400);
+                });
             });
         },
 
