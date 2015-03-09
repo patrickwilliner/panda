@@ -29,6 +29,10 @@
 		function loadBundles() {
 			Bundle.query(function(data) {
 		  	$scope.bundles = data;
+		  	$scope.bundles.map(function(bundle, idx) {
+		  		bundle.index = idx + 1;
+		  		return bundle;
+		  	});
 		  });
 		}
 
@@ -43,6 +47,46 @@
 		  	$scope.tags = data;
 		  });
 		}
+
+		function swapBundles(bundle1, bundle2) {
+			$http({
+          method: 'post',
+          url: '/api/bundles/' + bundle1._id + '/swap',
+          data: {
+          	id: bundle2._id
+          }
+      }).success(function() {
+      	loadBundles();
+      });
+		}
+
+		function findPreviousBundle(bundle) {
+        var previous = $scope.bundles[0];
+
+        for (var i = 1; i < $scope.bundles.length; i++) {
+        	if (bundle._id === $scope.bundles[i]._id) {
+        		return previous;
+        	} else {
+        		previous = $scope.bundles[i];
+        	}
+        }
+
+        return null;
+    }
+
+    function findNextBundle(bundle) {
+    	var next = $scope.bundles[$scope.bundles.length - 1];
+
+    	for (var i = $scope.bundles.length - 2; i >= 0; i--) {
+    		if (bundle._id === $scope.bundles[i]._id) {
+        		return next;
+        	} else {
+        		next = $scope.bundles[i];
+        	}
+    	}
+
+    	return null;
+    }
 
 		$scope.setTab = function(identifier) {
 			$scope.selection.tabItem = identifier;
@@ -132,6 +176,16 @@
       		loadBundles();
       	});
 			}
+	  };
+
+	  $scope.bundleUp = function() {
+	  	var previousBundle = findPreviousBundle($scope.selection.bundle);
+	  	swapBundles($scope.selection.bundle, previousBundle);
+	  };
+
+	  $scope.bundleDown = function() {
+	  	var nextBundle = findNextBundle($scope.selection.bundle);
+	  	swapBundles($scope.selection.bundle, nextBundle);
 	  };
 	}]);
 })();

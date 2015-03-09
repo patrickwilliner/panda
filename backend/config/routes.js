@@ -53,6 +53,10 @@ module.exports = function(app, passport, models) {
         api.deleteBundle(req, res);
     });
 
+    app.post('/api/bundles/:id/swap', function(req, res) {
+        api.swapBundles(req, res);
+    });
+
     app.get('/api/links', function(req, res) {
         api.listLinks(req, res);
     });

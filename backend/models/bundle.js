@@ -9,7 +9,8 @@ module.exports = function(connection) {
   var bundleSchema = new Schema({
       label: String,
       owner: String,
-      linkCount: Number
+      linkCount: Number,
+      order: Number
   });
 
   var Bundle = connection.model('Bundle', bundleSchema);

@@ -14,7 +14,7 @@
 	
 	<tbody>
 		<tr ng-class="{selected : bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles" ng-click="selectBundle(bundle)">
-	  	<td>{{bundle.order}}</td>
+	  	<td>{{bundle.index}}</td>
 	  	<td>{{bundle.label}}</td>
 	  	<td>{{bundle.linkCount}}</td>
 	  </tr>

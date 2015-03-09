@@ -7,7 +7,6 @@ module.exports = function(models) {
     var User = models.user;
     var Bundle = models.bundle;
     var Link = models.link;
-    var Tag = models.tag;
 
     function setTimestamps(object) {
         var date = new Date();
@@ -94,14 +93,18 @@ module.exports = function(models) {
             var bundle = new Bundle(req.body);
             setTimestamps(bundle);
 
-            bundle.save(function(err) {
-                if (err) {
-                    console.log(err);
-                    res.send(400);
-                } else {
-                    res.send(200);
-                }
-            });
+            Bundle.findOne().sort('-order').exec(function(err, maxBundle) {
+                bundle.order = maxBundle.order + 1;
+
+                bundle.save(function(err) {
+                    if (err) {
+                        console.log(err);
+                        res.send(400);
+                    } else {
+                        res.send(200);
+                    }
+                });
+            });            
         },
 
         updateBundle: function(req, res) {
@@ -130,6 +133,42 @@ module.exports = function(models) {
                         res.send(200);
                     }
                 });
+            });
+        },
+
+        swapBundles: function(req, res) {
+            return Bundle.findById(req.params.id, function (err, bundle1) {
+                if (err) {
+                    console.log(err);
+                    res.send(400);
+                } else {
+                    return Bundle.findById(req.body.id, function (err, bundle2) {
+                        if (err) {
+                            console.log(err);
+                            res.send(400);
+                        } else {
+                            var temp = bundle1.order;
+                            bundle1.order = bundle2.order;
+                            bundle2.order = temp;
+
+                            bundle1.save(function(err) {
+                                if (err) {
+                                    console.log(err);
+                                    res.send(400);
+                                } else {
+                                    bundle2.save(function(err) {
+                                        if (err) {
+                                            console.log(err);
+                                            res.send(400);
+                                        } else {
+                                            res.send(200);
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }                
             });
         },
 
