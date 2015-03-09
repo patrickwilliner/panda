@@ -105,11 +105,32 @@ module.exports = function(models) {
         },
 
         updateBundle: function(req, res) {
+            return Bundle.findById(req.params.id, function (err, bundle) {
+                setTimestamps(bundle);
+                bundle.label = normalizeUrl(req.body.label);
 
+                return bundle.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.send(400);
+                    } else {
+                        res.send(bundle);
+                    }
+                });
+            });
         },
 
         deleteBundle: function(req, res) {
-
+            return Bundle.findById(req.params.id, function (err, bundle) {
+                return bundle.remove(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.send(400);
+                    } else {
+                        res.send(200);
+                    }
+                });
+            });
         },
 
         listTags: function(req, res) {

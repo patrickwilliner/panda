@@ -109,5 +109,17 @@
 
 	  	$('#' + $scope.editBundleDialog.id).modal('show');
 	  };
+
+	  $scope.deleteBundle = function() {
+	  	if (window.confirm('Are you sure?')) {
+				$http({
+          method: 'delete',
+          url: '/api/bundles/' + $scope.selection.bundle._id,
+          data: $scope.form
+      	}).success(function() {
+      		$scope.setBundle($scope.selection.bundle);
+      	});
+			}
+	  };
 	}]);
 })();
