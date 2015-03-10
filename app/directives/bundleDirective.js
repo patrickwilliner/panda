@@ -6,7 +6,7 @@
 	module.directive('pdBundle', [function () {
 		return {
 			restrict: 'E',
-			templateUrl: 'views/link/_bundle.html'
+			templateUrl: 'views/link/bundle.html'
 		};
 	}]);
 })();
