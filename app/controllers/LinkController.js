@@ -60,9 +60,35 @@
 			}
 		}
 
+		function loadBundles(callback) {
+			Bundle.query(function(data) {
+				var searchBundle;		
+		  	$scope.bundles = data;
+
+		  	if ($location.search().hasOwnProperty('search')) {
+		  		searchBundle = {
+			  		label: 'Search Result',
+			  		isSearch: true,
+			  		searchText: $location.search().search
+			  	};
+
+			  	$scope.bundles.splice(0, 0, searchBundle);
+			  } else if ($location.search().hasOwnProperty('tag')) {
+		  		searchBundle = {
+			  		label: 'Tag "' + $location.search().tag + '"',
+			  		isTag: true,
+			  		tag: $location.search().tag
+			  	};
+
+			  	$scope.bundles.splice(0, 0, searchBundle);
+		  	}
+
+		  	callback();
+		 	});
+		}
+
 		$scope.setBundle = function(bundle) {
 			$scope.select(null);
-			$scope.selection.bundle = bundle;
 
 			if (bundle.isSearch) {
 				$http.get('/api/links/search/?search=' + bundle.searchText).
@@ -81,13 +107,25 @@
 				    console.log(data, status);
 			  });
 			} else {
-				$http.get('/api/bundles/' + bundle._id + '/links').
-				  success(function(data, status, headers, config) {
-				  	$scope.selection.links = data;
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data, status);
-			  });
+				// reload bundle
+				Bundle.get({id: bundle._id}, function(bundle) {
+					// TODO refactor this part
+				  $scope.selection.bundle = bundle;
+				  for (var i = 0; i < $scope.bundles.length; i++) {
+				  	if ($scope.bundles[i]._id === bundle._id) {
+				  		$scope.bundles[i] = bundle;
+				  	}
+				  }
+
+				  // reload links
+					$http.get('/api/bundles/' + bundle._id + '/links').
+					  success(function(data, status, headers, config) {
+					  	$scope.selection.links = data;
+					  }).
+					  error(function(data, status, headers, config) {
+					    console.log(data, status);
+				  });
+				});				
 			}
 		};
 
@@ -186,31 +224,11 @@
 			}
 		}
 
-		Bundle.query(function(data) {
-	  	$scope.bundles = data;
-
-	  	if ($location.search().hasOwnProperty('search')) {
-	  		var searchBundle = {
-		  		label: 'Search Result',
-		  		isSearch: true,
-		  		searchText: $location.search().search
-		  	};
-
-		  	$scope.bundles.splice(0, 0, searchBundle);
-		  } else if ($location.search().hasOwnProperty('tag')) {
-		  	var searchBundle = {
-		  		label: 'Tag "' + $location.search().tag + '"',
-		  		isTag: true,
-		  		tag: $location.search().tag
-		  	};
-
-		  	$scope.bundles.splice(0, 0, searchBundle);
+		loadBundles(function() {
+			if ($scope.bundles && $scope.bundles[0]) {
+		  	$scope.setBundle($scope.bundles[0]);
 		  }
-
-		  if ($scope.bundles && $scope.bundles[0]) {
-	  		$scope.setBundle($scope.bundles[0]);
-	  	}
-	  });
+		});
 
 		$scope.selection = {
 			bundle: {}

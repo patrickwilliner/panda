@@ -101,6 +101,25 @@ module.exports = function(models) {
             });
         },
 
+        getBundle: function(req, res) {
+            return Bundle.findById(req.params.id, function (err, bundle) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(400);
+                } else {
+                    Link.count({bundle: bundle._id}, function(err, count) {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(400);
+                        } else {
+                            bundle.linkCount = count;
+                            res.send(bundle);
+                        }
+                    });
+                }
+            });
+        },
+
         createBundle: function(req, res) {
             var bundle = new Bundle(req.body);
             setTimestamps(bundle);

@@ -33,6 +33,10 @@ module.exports = function(app, passport, models) {
         api.listUsers(req, res);
     });
 
+    app.get('/api/bundles/:id', function(req, res) {
+        api.getBundle(req, res);
+    });
+
     app.get('/api/bundles', function(req, res) {
         api.listBundles(req, res);
     });
