@@ -30,15 +30,20 @@
 	]);
 
 	module.controller('ApplicationController', ['$scope', '$location', function($scope, $location) {
-	  $scope.user = {
-	  	login: 'wipa',
-	  	lastName: 'Williner',
-	  	firstName: 'Patrick'
-	  };
+		function init() {
+			// set user until authentification system is implemented
+			$scope.user = {
+		  	login: 'wipa',
+		  	lastName: 'Williner',
+		  	firstName: 'Patrick'
+	  	};
 
-	  $scope.searchText = '';
+	  	// set search text
+	  	$scope.searchText = '';
 
-	  $scope.keyListeners = [];
+	  	// set key listeners
+	  	$scope.keyListeners = [];
+		}
 
 	  $scope.registerKeyListener = function(listener) {
 	  	$scope.keyListeners.push(listener);
@@ -61,5 +66,7 @@
 		$scope.showPwDialog = function() {
 	  	$('#pwDialog').modal('show');
 	  };
+
+	  init();
   }]);
 })();

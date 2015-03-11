@@ -20,13 +20,12 @@ module.exports = function(app, passport, models) {
     });
 
     app.get('/login', function(req, res) {
-        res.render('login');
+        res.render('login/login');
     });
 
-    app.post('/login', passport.authenticate('local-authorization', {
+    app.post('/login', passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true
+        failureRedirect: '/login'
     }));
 
     app.get('/api/users', function(req, res) {

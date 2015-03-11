@@ -3,9 +3,10 @@
 var LocalStrategy    = require('passport-local').Strategy;
 
 module.exports = function(passport, models) {
-    passport.use('local', new LocalStrategy(
-        function(username, password, done) {
-            return done(null, {'login' : 'wipa'});
-        }
-    ));
+  passport.use(new LocalStrategy(
+      function(username, password, done) {
+    		console.log('login');
+        return done(null, {'login' : 'wipa'});
+      }
+  ));
 };
