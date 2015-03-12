@@ -1,10 +1,8 @@
-(function() {
+define([], function() {
 	'use strict';
 	
-	var module = angular.module('pdDomainFilter', []);
-
-	module.filter('domain', function() {
-	  return function(input) {
+	function domainFilter() {
+		return function(input) {
 	    var result = '';
 	    input = input || '';
 	    
@@ -14,5 +12,7 @@
 
 	    return result;
 	  };
-	});
-})();
+	}
+
+	return domainFilter;
+});

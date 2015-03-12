@@ -1,9 +1,7 @@
-(function() {
+define([], function() {
 	'use strict';
 	
-	var module = angular.module('pdDialogDirective', []);
-
-	module.directive('pdDialog', [function () {
+	function pdDialogDirective() {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/common/dialog.html',
@@ -12,5 +10,7 @@
 				form: '=form'
 			}
 		};
-	}]);
-})();
+	}
+
+	return pdDialogDirective;
+});

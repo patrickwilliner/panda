@@ -1,9 +1,7 @@
-(function() {
+define([], function() {
 	'use strict';
 	
-	var module = angular.module('pdLinkDialogDirective', []);
-
-	module.directive('pdLinkDialog', [function () {
+	function pdLinkDialogDirective() {
 		return {
 			restrict: 'E',
 			templateUrl: 'views/link/linkDialog.html',
@@ -12,5 +10,7 @@
 				form: '=form'
 			}
 		};
-	}]);
-})();
+	}
+
+	return pdLinkDialogDirective;
+});

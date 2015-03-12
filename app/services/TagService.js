@@ -1,9 +1,10 @@
-(function() {
+define([], function() {
 	'use strict';
-
-	var module = angular.module('pdTagService', ['ngResource']);
-
-	module.factory('Tag', ['$resource', function ($resource) {
+	
+	function tagService($resource) {
 		return $resource('/api/tags/:id');
-	}]);
-})();
+	}
+
+	tagService.$inject = ['$resource'];
+	return tagService;
+});

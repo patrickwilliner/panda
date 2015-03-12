@@ -1,35 +1,7 @@
-(function() {
+define(['jquery'], function($) {
 	'use strict';
-	
-	var module = angular.module('pdApp', ['pdLinkController', 'pdConfigurationController', 'pdEnterDirective', 'pdFlagIconDirective', 'ngRoute']);
 
-	module.config(['$routeProvider', '$locationProvider',
-		function($routeProvider, $locationProvider) {
-			$routeProvider.
-				when('/', {
-					templateUrl: 'views/home/index.html'
-				}).
-				when('/links', {
-					templateUrl: 'views/link/index.html',
-					controller: 'LinkController'
-				}).
-				when('/configuration', {
-					templateUrl: 'views/configuration/index.html',
-					controller: 'ConfigurationController'
-				}).
-				when('/about', {
-					templateUrl: 'views/about/index.html'
-				}).
-				otherwise({
-					redirectTo: '/'
-				});
-
-				// pretty urls - no hashs in url
-				$locationProvider.html5Mode(true);
-		}
-	]);
-
-	module.controller('ApplicationController', ['$scope', '$location', function($scope, $location) {
+	function applicationController($scope, $location) {
 		function init() {
 			// set user until authentification system is implemented
 			$scope.user = {
@@ -68,5 +40,8 @@
 	  };
 
 	  init();
-  }]);
-})();
+	}
+
+	applicationController.$inject = ['$scope', '$location'];
+	return applicationController;
+});

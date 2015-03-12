@@ -1,9 +1,5 @@
-(function() {
-	'use strict';
-	
-	var module = angular.module('pdFlagIconDirective', []);
-
-	module.directive('pdFlagIcon', [function () {
+define([], function() {
+	function pdFlagIconDirective() {
 		return {
 			restrict: 'E',
 			scope: {
@@ -16,5 +12,7 @@
 				};
 			}
 		};
-	}]);
-})();
+	}
+
+	return pdFlagIconDirective;
+});

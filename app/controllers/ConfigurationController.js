@@ -1,9 +1,7 @@
-(function() {
+define(['jquery'], function($) {
 	'use strict';
 	
-	var module = angular.module('pdConfigurationController', ['pdBundleService', 'pdUserService', 'pdDialogDirective']);
-
-	module.controller('ConfigurationController', ['$scope', '$http', 'Bundle', 'User', 'Tag', function($scope, $http, Bundle, User, Tag) {
+	function configurationController($scope, $http, Link, Bundle, Tag, User) {
 		function createBundle() {
 			$http({
           method: 'post',
@@ -187,5 +185,8 @@
 	  	var nextBundle = findNextBundle($scope.selection.bundle);
 	  	swapBundles($scope.selection.bundle, nextBundle);
 	  };
-	}]);
-})();
+	}
+
+	configurationController.$inject = ['$scope', '$http', 'Link', 'Bundle', 'Tag', 'User'];
+	return configurationController;
+});

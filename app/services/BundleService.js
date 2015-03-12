@@ -1,9 +1,10 @@
-(function() {
+define([], function() {
 	'use strict';
 
-	var module = angular.module('pdBundleService', ['ngResource']);
-
-	module.factory('Bundle', ['$resource', function ($resource) {
+	function bundleService($resource) {
 		return $resource('/api/bundles/:id');
-	}]);
-})();
+	}
+
+	bundleService.$inject = ['$resource'];
+	return bundleService;
+});

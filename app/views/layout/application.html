@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" ng-app="pdApp">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -11,30 +11,11 @@
   <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
-<body ng-controller="ApplicationController" ng-keydown="onKeyDown($event)">
+<body ng-controller="applicationController" ng-keydown="onKeyDown($event)">
   <div ng-include src="'views/common/navigation.html'"></div>
   
   <div ng-view></div>
   
-  <script data-main="config/require" src="bower_components/requirejs/require.js"></script>
-
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="services/UserService.js"></script>
-  <script src="services/BundleService.js"></script>
-  <script src="services/LinkService.js"></script>
-  <script src="services/TagService.js"></script>
-  <script src="controllers/ApplicationController.js"></script>
-  <script src="controllers/LinkController.js"></script>
-  <script src="controllers/ConfigurationController.js"></script>
-  <script src="filters/domainFilter.js"></script>
-  <script src="directives/bundleDirective.js"></script>
-  <script src="directives/linkDialogDirective.js"></script>
-  <script src="directives/dialogDirective.js"></script>
-  <script src="directives/enterDirective.js"></script>
-  <script src="directives/flagIconDirective.js"></script>
+  <script data-main="/config/require_config" src="/bower_components/requirejs/require.js"></script>
 </body>
 </html>

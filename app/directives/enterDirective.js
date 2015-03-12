@@ -1,9 +1,7 @@
-(function() {
+define([], function() {
 	'use strict';
 	
-	var module = angular.module('pdEnterDirective', []);
-
-	module.directive('pdEnter', [function () {
+	function pdEnterDirective() {
 		return function($scope, element, attrs) {
 			element.bind('keydown keypress', function(event) {
           if(event.which === 13) {
@@ -15,5 +13,7 @@
           }
       });
 		};
-	}]);
-})();
+	}
+
+	return pdEnterDirective;
+});

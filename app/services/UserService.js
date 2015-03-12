@@ -1,9 +1,10 @@
-(function() {
+define([], function() {
 	'use strict';
-
-	var module = angular.module('pdUserService', ['ngResource']);
-
-	module.factory('User', ['$resource', function ($resource) {
+	
+	function userService($resource) {
 		return $resource('/api/users/:id');
-	}]);
-})();
+	}
+
+	userService.$inject = ['$resource'];
+	return userService;
+});
