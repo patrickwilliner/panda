@@ -3,19 +3,27 @@
 module.exports = function(app, passport, models) {
     var api = require('../api/api.js')(models);
 
-    app.get('/', function(req, res){
+    var isAuthenticated = function (req, res, next) {
+      if (req.isAuthenticated()) {
+        return next();
+      } else {
+        res.redirect('/login');
+      }
+    };
+
+    app.get('/', isAuthenticated, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/links', function(req, res){
+    app.get('/links', isAuthenticated, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/configuration', function(req, res){
+    app.get('/configuration', isAuthenticated, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/about', function(req, res){
+    app.get('/about', isAuthenticated, function(req, res){
         res.render('layout/application');
     });
 
@@ -23,68 +31,73 @@ module.exports = function(app, passport, models) {
         res.render('login/login');
     });
 
-    app.post('/login', passport.authenticate('local', {
+    app.post('/login', passport.authenticate('login', {
         successRedirect: '/',
         failureRedirect: '/login'
     }));
 
-    app.get('/api/users', function(req, res) {
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/login');
+    });
+
+    app.get('/api/users', isAuthenticated, function(req, res) {
         api.listUsers(req, res);
     });
 
-    app.get('/api/bundles/:id', function(req, res) {
+    app.get('/api/bundles/:id', isAuthenticated, function(req, res) {
         api.getBundle(req, res);
     });
 
-    app.get('/api/bundles', function(req, res) {
+    app.get('/api/bundles', isAuthenticated, function(req, res) {
         api.listBundles(req, res);
     });
 
-    app.get('/api/bundles/:id/links', function(req, res) {
+    app.get('/api/bundles/:id/links', isAuthenticated, function(req, res) {
         api.findLinksByBundle(req, res);
     });
 
-    app.post('/api/bundles', function(req, res) {
+    app.post('/api/bundles', isAuthenticated, function(req, res) {
         api.createBundle(req, res);
     });
 
-    app.put('/api/bundles/:id', function(req, res) {
+    app.put('/api/bundles/:id', isAuthenticated, function(req, res) {
         api.updateBundle(req, res);
     });
 
-    app.delete('/api/bundles/:id', function(req, res) {
+    app.delete('/api/bundles/:id', isAuthenticated, function(req, res) {
         api.deleteBundle(req, res);
     });
 
-    app.post('/api/bundles/:id/swap', function(req, res) {
+    app.post('/api/bundles/:id/swap', isAuthenticated, function(req, res) {
         api.swapBundles(req, res);
     });
 
-    app.get('/api/links', function(req, res) {
+    app.get('/api/links', isAuthenticated, function(req, res) {
         api.listLinks(req, res);
     });
 
-    app.get('/api/links/search', function(req, res) {
+    app.get('/api/links/search', isAuthenticated, function(req, res) {
         api.findLinks(req, res);
     });
 
-    app.post('/api/links', function(req, res) {
+    app.post('/api/links', isAuthenticated, function(req, res) {
         api.createLink(req, res);
     });
 
-    app.put('/api/links/:id', function(req, res) {
+    app.put('/api/links/:id', isAuthenticated, function(req, res) {
         api.updateLink(req, res);
     });
 
-    app.delete('/api/links/:id', function(req, res) {
+    app.delete('/api/links/:id', isAuthenticated, function(req, res) {
         api.deleteLink(req, res);
     });
 
-    app.get('/api/tags', function(req, res) {
+    app.get('/api/tags', isAuthenticated, function(req, res) {
         api.listTags(req, res);
     });
 
-    app.get('/api/load_page_title', function(req, res) {
+    app.get('/api/load_page_title', isAuthenticated, function(req, res) {
         api.loadPageTitle(req, res);
     });
 };

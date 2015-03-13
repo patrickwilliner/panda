@@ -1,7 +1,7 @@
 define(['jquery'], function($) {
 	'use strict';
 
-	function applicationController($scope, $location) {
+	function applicationController($scope, $location, $window) {
 		function init() {
 			// set user until authentification system is implemented
 			$scope.user = {
@@ -39,9 +39,13 @@ define(['jquery'], function($) {
 	  	$('#pwDialog').modal('show');
 	  };
 
+	  $scope.logout = function() {
+	  	$window.location.href = '/logout';
+	  };
+
 	  init();
 	}
 
-	applicationController.$inject = ['$scope', '$location'];
+	applicationController.$inject = ['$scope', '$location', '$window'];
 	return applicationController;
 });
