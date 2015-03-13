@@ -11,6 +11,10 @@ module.exports = function(connection) {
 		lastName: String
 	});
 
+	userSchema.methods.isValidPassword = function(password) {
+		return true;
+	};
+
 	var User = connection.model('User', userSchema);
 
 	return User;

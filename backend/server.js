@@ -36,6 +36,7 @@ app.use(express.static(path.join(__dirname, '/../app')));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({secret: 'keyboard cat'}));
 
 //passport configuration
 app.use(passport.initialize());

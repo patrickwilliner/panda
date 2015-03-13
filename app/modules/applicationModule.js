@@ -1,4 +1,5 @@
 define([
+	'config/applicationConfig',
 	'controllers/ApplicationController',
 	'controllers/ConfigurationController',
 	'controllers/LinkController',
@@ -16,6 +17,7 @@ define([
 	'angular-route',
 	'angular-resource'
 	], function(
+		applicationConfig,
 		applicationController,
 		configurationController,
 		linkController,
@@ -32,31 +34,7 @@ define([
 		domainFilter) {
 	var module = angular.module('pandaApp', ['ngRoute','ngResource']);
 
-	module.config(['$routeProvider', '$locationProvider',
-		function($routeProvider, $locationProvider) {
-			$routeProvider.
-				when('/', {
-					templateUrl: 'views/home/index.html'
-				}).
-				when('/links', {
-					templateUrl: 'views/link/index.html',
-					controller: 'linkController'
-				}).
-				when('/configuration', {
-					templateUrl: 'views/configuration/index.html',
-					controller: 'configurationController'
-				}).
-				when('/about', {
-					templateUrl: 'views/about/index.html'
-				}).
-				otherwise({
-					redirectTo: '/'
-				});
-
-				// pretty urls - no hashs in url
-				$locationProvider.html5Mode(true);
-		}
-	]);
+	module.config(applicationConfig);
 
 	module.controller('applicationController', applicationController);
 	module.controller('configurationController', configurationController);
