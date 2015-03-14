@@ -148,8 +148,7 @@ define(['jquery'], function($) {
 	  	if (window.confirm('Are you sure?')) {
 				$http({
           method: 'delete',
-          url: '/api/bundles/' + $scope.selection.bundle._id,
-          data: $scope.form
+          url: '/api/bundles/' + $scope.selection.bundle._id
       	}).success(function() {
       		loadBundles();
       	});

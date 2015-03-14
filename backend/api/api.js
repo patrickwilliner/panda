@@ -2,7 +2,7 @@
 
 module.exports = function(models) {
     var http = require('follow-redirects').http;
-    var Promise = require("bluebird");
+    var Promise = require('bluebird');
     var ObjectId = require('mongoose').Types.ObjectId;
     var User = models.user;
     var Bundle = models.bundle;
@@ -78,6 +78,55 @@ module.exports = function(models) {
         listUsers: function(req, res) {
             User.find(function(err, users) {
                 res.json(users);
+            });
+        },
+
+        createUser: function(req, res) {
+            var user = new User(req.body);
+            setTimestamps(user);
+
+            user.save(function(err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        },
+
+        updateUser: function(req, res) {
+            console.log('id', req.params.id);
+
+            return User.findById(req.params.id, function (err, user) {
+                setTimestamps(user);
+                user.login = req.body.login;
+                user.givenName = req.body.givenName;
+                user.surname = req.body.surname;
+                user.active = req.body.active;
+                user.admin = req.body.admin;
+
+                return user.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(400);
+                    } else {
+                        res.send(user);
+                    }
+                });
+            });
+        },
+
+        deleteUser: function(req, res) {
+            return User.findById(req.params.id, function (err, user) {
+                return user.remove(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(400);
+                    } else {
+                        res.sendStatus(200);
+                    }
+                });
             });
         },
 

@@ -45,6 +45,18 @@ module.exports = function(app, passport, models) {
         api.listUsers(req, res);
     });
 
+    app.post('/api/users', isAuthenticated, function(req, res) {
+        api.createUser(req, res);
+    });
+
+    app.put('/api/users/:id', isAuthenticated, function(req, res) {
+        api.updateUser(req, res);
+    });
+
+    app.delete('/api/users/:id', isAuthenticated, function(req, res) {
+        api.deleteUser(req, res);
+    });
+
     app.get('/api/bundles/:id', isAuthenticated, function(req, res) {
         api.getBundle(req, res);
     });

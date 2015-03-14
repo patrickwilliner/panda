@@ -1,5 +1,8 @@
 <div class="btn-group btn-group-sm">
-	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolNew()}" ng-click="showNewBundleDialog()">New</button>
-	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolEdit()}" ng-click="showEditBundleDialog()">Edit</button>
-	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolDelete()}" ng-click="deleteBundle()">Delete</button>
+	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolNew()}" ng-click="showNewUserDialog()">New</button>
+	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolEdit()}" ng-click="showEditUserDialog()">Edit</button>
+	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolDelete()}" ng-click="deleteUser()">Delete</button>
 </div>
+
+<pd-dialog dialog="newUserDialog" form="form"></pd-dialog>
+<pd-dialog dialog="editUserDialog" form="form"></pd-dialog>
