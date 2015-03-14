@@ -1,3 +1,8 @@
+<span ng-show="!selection.bundle.isSearch" ng-include="'views/link/toolbar.html'"></span>
+
+<br />
+<br />
+
 <div class="link-item" ng-repeat="link in selection.links" ng-click="select(link)" ng-class="{selected : selection.link._id === link._id}">
 	<div>
 		<a target="_blank" href="{{link.url}}">

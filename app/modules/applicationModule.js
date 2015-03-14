@@ -3,6 +3,9 @@ define([
 	'controllers/ApplicationController',
 	'controllers/ConfigurationController',
 	'controllers/LinkController',
+	'controllers/userConfigurationController',
+	'controllers/tagConfigurationController',
+	'controllers/bundleConfigurationController',
 	'services/BundleService',
 	'services/LinkService',
 	'services/SessionService',
@@ -21,6 +24,9 @@ define([
 		applicationController,
 		configurationController,
 		linkController,
+		userConfigurationController,
+		tagConfigurationController,
+		bundleConfigurationController,
 		bundleService,
 		linkService,
 		sessionService,
@@ -39,6 +45,9 @@ define([
 	module.controller('applicationController', applicationController);
 	module.controller('configurationController', configurationController);
 	module.controller('linkController', linkController);
+	module.controller('userConfigurationController', userConfigurationController);
+	module.controller('tagConfigurationController', tagConfigurationController);
+	module.controller('bundleConfigurationController', bundleConfigurationController);
 
 	module.factory('Bundle', bundleService);
 	module.factory('Link', linkService);

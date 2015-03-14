@@ -1,0 +1,17 @@
+<form id="{{dialog.formId}}" name="bundleForm" novalidate>
+  <div class="form-group" ng-class="{'has-error': bundleForm.label.$dirty && bundleForm.label.$invalid}">
+    <label for="label">Login</label>
+    <input type="text" class="form-control" id="login" name="login" ng-model="form.login" placeholder="Enter Login" required>
+    <span class="help-block" ng-show="bundleForm.label.$dirty && bundleForm.label.$error.required">Field must not be empty.</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': bundleForm.label.$dirty && bundleForm.label.$invalid}">
+    <label for="label">Given name</label>
+    <input type="text" class="form-control" id="givenName" name="givenName" ng-model="form.givenName" placeholder="Enter Given Name" required>
+    <span class="help-block" ng-show="bundleForm.label.$dirty && bundleForm.label.$error.required">Field must not be empty.</span>
+  </div>
+  <div class="form-group" ng-class="{'has-error': bundleForm.label.$dirty && bundleForm.label.$invalid}">
+    <label for="label">Surname</label>
+    <input type="text" class="form-control" id="surname" name="surname" ng-model="form.surname" placeholder="Enter Surname" required>
+    <span class="help-block" ng-show="bundleForm.label.$dirty && bundleForm.label.$error.required">Field must not be empty.</span>
+  </div>
+</form>

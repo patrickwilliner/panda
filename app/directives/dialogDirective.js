@@ -4,7 +4,7 @@ define([], function() {
 	function pdDialogDirective() {
 		return {
 			restrict: 'E',
-			templateUrl: 'views/common/dialog.html',
+			templateUrl: 'views/shared/dialog.html',
 			scope: {
 				dialog: '=dialog',
 				form: '=form'
