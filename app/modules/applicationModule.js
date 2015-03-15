@@ -3,9 +3,10 @@ define([
 	'controllers/ApplicationController',
 	'controllers/ConfigurationController',
 	'controllers/LinkController',
-	'controllers/userConfigurationController',
-	'controllers/tagConfigurationController',
-	'controllers/bundleConfigurationController',
+    'controllers/LinkDetailController',
+	'controllers/UserConfigurationController',
+	'controllers/TagConfigurationController',
+	'controllers/BundleConfigurationController',
 	'services/BundleService',
 	'services/LinkService',
 	'services/SessionService',
@@ -24,6 +25,7 @@ define([
 		applicationController,
 		configurationController,
 		linkController,
+        linkDetailController,
 		userConfigurationController,
 		tagConfigurationController,
 		bundleConfigurationController,
@@ -45,6 +47,7 @@ define([
 	module.controller('applicationController', applicationController);
 	module.controller('configurationController', configurationController);
 	module.controller('linkController', linkController);
+    module.controller('linkDetailController', linkDetailController);
 	module.controller('userConfigurationController', userConfigurationController);
 	module.controller('tagConfigurationController', tagConfigurationController);
 	module.controller('bundleConfigurationController', bundleConfigurationController);

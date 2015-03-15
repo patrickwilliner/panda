@@ -3,3 +3,6 @@
 	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolEdit()}" ng-click="showEditDialog()">Edit</button>
   <button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolDelete()}" ng-click="deleteLink()">Delete</button>
 </div>
+
+<pd-link-dialog dialog="newLinkDialog" form="form"></pd-link-dialog>
+<pd-link-dialog dialog="editLinkDialog" form="form"></pd-link-dialog>

@@ -1,7 +1,7 @@
 <div class="container">
   <ul class="nav nav-pills nav-stacked col-md-2">
-  	<li ng-class="{active: bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles">
-  		<a href="" ng-click="setBundle(bundle)">
+  	<li ng-class="{active: model.isSelected(bundle)}" ng-repeat="bundle in model.getElements()">
+  		<a href="" ng-click="select(bundle)">
   			<span ng-bind="bundle.label"></span>
   			<span class="badge pull-right">{{bundle.linkCount}}</span>
   		</a>
@@ -12,6 +12,3 @@
 		<pd-bundle></pd-bundle>
 	</div>
 </div>
-
-<pd-link-dialog dialog="newLinkDialog" form="form"></pd-link-dialog>
-<pd-link-dialog dialog="editLinkDialog" form="form"></pd-link-dialog>

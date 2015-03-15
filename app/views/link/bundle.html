@@ -3,7 +3,7 @@
 <br />
 <br />
 
-<div class="link-item" ng-repeat="link in selection.links" ng-click="select(link)" ng-class="{selected : selection.link._id === link._id}">
+<div class="link-item" ng-repeat="link in model.getElements()" ng-click="selectLink(link)" ng-class="{selected : model.isSelected(link)}">
 	<div>
 		<a target="_blank" href="{{link.url}}">
     	<span class="caption">{{link.label}}</span>

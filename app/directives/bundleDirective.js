@@ -4,7 +4,9 @@ define([], function() {
 	function pdBundleDirective() {
 		return {
 			restrict: 'E',
-			templateUrl: 'views/link/bundle.html'
+			templateUrl: 'views/link/bundle.html',
+            controller: 'linkDetailController',
+            scope: true
 		};
 	}
 

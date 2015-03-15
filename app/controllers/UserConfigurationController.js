@@ -26,8 +26,7 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
 
         function loadUsers() {
             User.query(function (data) {
-                $scope.users = data;
-                $scope.selection.setElements(data);
+                $scope.model.setElements(data);
             });
         }
 
@@ -37,10 +36,10 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
 
 
         $scope.selectUser = function (user) {
-            if ($scope.selection.isSelected(user)) {
-                $scope.selection.clearSelection();
+            if ($scope.model.isSelected(user)) {
+                $scope.model.clearSelection();
             } else {
-                $scope.selection.select(user);
+                $scope.model.select(user);
             }
         };
 
@@ -49,11 +48,11 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         };
 
         $scope.enableToolEdit = function () {
-            return $scope.selection.hasSelection();
+            return $scope.model.hasSelection();
         };
 
         $scope.enableToolDelete = function () {
-            return $scope.selection.hasSelection();
+            return $scope.model.hasSelection();
         };
 
         $scope.newUserDialog = {
@@ -94,12 +93,12 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             console.log();
 
             $scope.form = {
-                _id: $scope.selection.getSelectedElement()._id,
-                login: $scope.selection.getSelectedElement().login,
-                givenName: $scope.selection.getSelectedElement().givenName,
-                surname: $scope.selection.getSelectedElement().surname,
-                active: $scope.selection.getSelectedElement().active,
-                admin: $scope.selection.getSelectedElement().admin
+                _id: $scope.model.getSelectedElement()._id,
+                login: $scope.model.getSelectedElement().login,
+                givenName: $scope.model.getSelectedElement().givenName,
+                surname: $scope.model.getSelectedElement().surname,
+                active: $scope.model.getSelectedElement().active,
+                admin: $scope.model.getSelectedElement().admin
             };
 
             $('#' + $scope.editUserDialog.id).modal('show');
@@ -109,14 +108,14 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             if (window.confirm('Are you sure?')) {
                 $http({
                     method: 'delete',
-                    url: '/api/users/' + $scope.selection.getSelectedElement()._id
+                    url: '/api/users/' + $scope.model.getSelectedElement()._id
                 }).success(function () {
                     loadUsers();
                 });
             }
         };
 
-        $scope.selection = new SelectionModel($scope.users, userComparator);
+        $scope.model = new SelectionModel(null, userComparator);
         loadUsers();
     }
 

@@ -15,7 +15,7 @@
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="user in users" ng-click="selectUser(user)" ng-class="{selected : selection.isSelected(user)}">
+		<tr ng-repeat="user in model.getElements()" ng-click="selectUser(user)" ng-class="{selected : model.isSelected(user)}">
 	  	<td>{{user.login}}</td>
 	  	<td>{{user.givenName}}</td>
 	  	<td>{{user.surname}}</td>

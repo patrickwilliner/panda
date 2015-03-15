@@ -3,6 +3,7 @@ define([], function() {
 		this.selectionIdx = -1;
 		this.elements = elements;
 		this.comparator = comparator;
+        this.listeners = [];
 	}
 
 	/*
@@ -12,6 +13,34 @@ define([], function() {
 		this.elements = elements;
 		this.clearSelection();
 	};
+
+    /*
+     * Inserts an element at the end of the elements list.
+     */
+    modelConstructor.prototype.append = function(element) {
+        this.elements.push(element);
+    };
+
+    /*
+     * Inserts an element at the beginning of the elements list.
+     */
+    modelConstructor.prototype.prepend = function(element) {
+        this.elements.splice(0, 0, element);
+    };
+
+    /*
+     * Accessor.
+     */
+    modelConstructor.prototype.hasAnyElement = function() {
+        return this.elements && this.elements.length > 0;
+    };
+
+    /*
+     * Accessor.
+     */
+    modelConstructor.prototype.getElements = function() {
+      return this.elements;
+    };
 
 	/*
 	 * Accessor.
@@ -54,6 +83,14 @@ define([], function() {
 		}
 	};
 
+    /*
+     * Selects the element with the given index.
+     */
+    modelConstructor.prototype.selectIndex = function(idx) {
+        this.selectionIdx = idx;
+        this.notifyListeners();
+    };
+
 	/*
 	 * Select the given element. If element is not found among the managed elements then selection is cleared.
 	 * The comparator is used to find the given element among managed elements.
@@ -61,7 +98,7 @@ define([], function() {
 	modelConstructor.prototype.select = function(element) {
 		for (var i = 0; i < this.elements.length; i++) {
 			if (this.comparator(element, this.elements[i])) {
-				this.selectionIdx = i;
+				this.selectIndex(i);
 				return element;
 			}
 		}
@@ -75,7 +112,7 @@ define([], function() {
 	 */
 	modelConstructor.prototype.selectPrevious = function() {
 		if (this.hasSelection() && !this.firstElementSelected()) {
-			this.selectionIdx = this.selectionIdx - 1;
+            this.selectIndex(this.selectionIdx - 1);
 		}
 	};
 
@@ -84,16 +121,39 @@ define([], function() {
 	 */
 	modelConstructor.prototype.selectNext = function() {
 		if (this.hasSelection() && !this.lastElementSelected()) {
-			this.selectionIdx = this.selectionIdx + 1;
+            this.selectIndex(this.selectionIdx + 1);
 		}
 	};
+
+    /*
+     * Selects first element.
+     */
+    modelConstructor.prototype.selectFirst = function() {
+        this.selectIndex(0);
+    };
 
 	/*
 	 * Clears selection.
 	 */
 	modelConstructor.prototype.clearSelection = function() {
-		this.selectionIdx = -1;
+        this.selectIndex(-1);
 	};
+
+    /*
+     *
+     */
+    modelConstructor.prototype.registerListener = function(listener) {
+        this.listeners.push(listener);
+    }
+
+    /*
+     *
+     */
+    modelConstructor.prototype.notifyListeners = function() {
+        this.listeners.forEach(function(listener) {
+            listener();
+        });
+    };
 
 	return modelConstructor;
 });
