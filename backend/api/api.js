@@ -96,8 +96,6 @@ module.exports = function(models) {
         },
 
         updateUser: function(req, res) {
-            console.log('id', req.params.id);
-
             return User.findById(req.params.id, function (err, user) {
                 setTimestamps(user);
                 user.login = req.body.login;
@@ -120,6 +118,24 @@ module.exports = function(models) {
         deleteUser: function(req, res) {
             return User.findById(req.params.id, function (err, user) {
                 return user.remove(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(400);
+                    } else {
+                        res.sendStatus(200);
+                    }
+                });
+            });
+        },
+
+        setUserPassword: function(req, res) {
+            var userId = req.params.id;
+            var password = req.body.password;
+
+            return User.findById(userId, function (err, user) {
+                user.setPassword(password);
+
+                return user.save(function (err) {
                     if (err) {
                         console.log(err);
                         res.sendStatus(400);
@@ -375,6 +391,10 @@ module.exports = function(models) {
                 console.log(err);
                 res.sendStatus(400);
             });
+        },
+
+        getSession: function(req, res) {
+            res.send(req.user);
         }
     };
 };

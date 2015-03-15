@@ -17,6 +17,7 @@ define([
 	'directives/enterDirective',
 	'directives/flagIconDirective',
 	'directives/linkDialogDirective',
+    'directives/equalsDirective',
 	'filters/domainFilter',
 	'angular-route',
 	'angular-resource'
@@ -39,6 +40,7 @@ define([
 		enterDirective,
 		flagIconDirective,
 		linkDialogDirective,
+        equalsDirective,
 		domainFilter) {
 	var module = angular.module('pandaApp', ['ngRoute','ngResource']);
 
@@ -63,6 +65,7 @@ define([
 	module.directive('pdEnter', enterDirective);
 	module.directive('pdFlagIcon', flagIconDirective);
 	module.directive('pdLinkDialog', linkDialogDirective);
+    module.directive('pdEquals', equalsDirective);
 
 	module.filter('pdDomain', domainFilter);
 });

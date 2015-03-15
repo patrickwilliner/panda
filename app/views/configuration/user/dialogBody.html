@@ -1,28 +1,18 @@
 <form id="{{dialog.formId}}" name="userForm" novalidate>
   <div class="form-group" ng-class="{'has-error': userForm.login.$dirty && userForm.login.$invalid}">
-    <label for="label">Login</label>
+    <label for="login">Login</label>
     <input type="text" class="form-control" id="login" name="login" ng-model="form.login" placeholder="Enter Login" required>
     <span class="help-block" ng-show="userForm.login.$dirty && userForm.login.$error.required">Field must not be empty.</span>
   </div>
   <div class="form-group" ng-class="{'has-error': userForm.givenName.$dirty && userForm.givenName.$invalid}">
-    <label for="label">Given name</label>
+    <label for="givenName">Given name</label>
     <input type="text" class="form-control" id="givenName" name="givenName" ng-model="form.givenName" placeholder="Enter Given Name" required>
     <span class="help-block" ng-show="userForm.givenName.$dirty && userForm.givenName.$error.required">Field must not be empty.</span>
   </div>
   <div class="form-group" ng-class="{'has-error': userForm.surname.$dirty && userForm.surname.$invalid}">
-    <label for="label">Surname</label>
+    <label for="surname">Surname</label>
     <input type="text" class="form-control" id="surname" name="surname" ng-model="form.surname" placeholder="Enter Surname" required>
     <span class="help-block" ng-show="userForm.surname.$dirty && userForm.surname.$error.required">Field must not be empty.</span>
-  </div>
-  <div class="form-group" ng-class="{'has-error': userForm.password.$dirty && userForm.password.$invalid}">
-    <label for="label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" ng-model="form.password" placeholder="Enter Password">
-    <span class="help-block" ng-show="userForm.password.$dirty && userForm.password.$error.required">Field must not be empty.</span>
-  </div>
-  <div class="form-group" ng-class="{'has-error': userForm.passwordConfirm.$dirty && userForm.passwordConfirm.$invalid}">
-    <label for="label">Confirm password</label>
-    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" ng-model="form.passwordConfirm" placeholder="Confirm Password">
-    <span class="help-block" ng-show="userForm.passwordConfirm.$dirty && userForm.passwordConfirm.$error.required">Field must not be empty.</span>
   </div>
   <div class="checkbox">
     <label>

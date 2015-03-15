@@ -6,7 +6,6 @@ module.exports = function(passport, models) {
 	var User = models.user;
 
   // used to serialize the user for the session
-  // TODO: don't use id -> create a random id instead
   passport.serializeUser(function(user, done) {
   	done(null, user._id);
   });
@@ -14,6 +13,8 @@ module.exports = function(passport, models) {
   // used to deserialize the user
   passport.deserializeUser(function(id, done) {
       User.findById(id, function(err, user) {
+          user.passwordHash = undefined;
+          user.passwordSalt = undefined;
           done(err, user);
       });
   });

@@ -24,6 +24,19 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             });
         }
 
+        function setPassword() {
+            $http({
+                method: 'put',
+                url: '/api/users/' + $scope.form._id + '/setpw',
+                data: {
+                    password: $scope.form.password
+                }
+            }).success(function () {
+                $('#' + $scope.setPwDialog.id).modal('hide');
+                loadUsers();
+            });
+        }
+
         function loadUsers() {
             User.query(function (data) {
                 $scope.model.setElements(data);
@@ -52,6 +65,10 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         };
 
         $scope.enableToolDelete = function () {
+            return $scope.model.hasSelection() && !$scope.model.getSelectedElement().system;
+        };
+
+        $scope.enableToolSetPw = function () {
             return $scope.model.hasSelection();
         };
 
@@ -72,6 +89,17 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             title: 'Edit user',
             submit: function () {
                 updateUser();
+            }
+        };
+
+        $scope.setPwDialog = {
+            bodyUrl: 'views/configuration/user/pwDialogBody.html',
+            footerUrl: 'views/configuration/user/dialogFooter.html',
+            id: 'setPwDialog',
+            title: 'Set Password',
+            formId: 'setPwForm',
+            submit: function () {
+                setPassword();
             }
         };
 
@@ -104,6 +132,15 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             $('#' + $scope.editUserDialog.id).modal('show');
         };
 
+        $scope.showSetPwDialog = function() {
+            $scope.form = {
+                _id: $scope.model.getSelectedElement()._id,
+                login: $scope.model.getSelectedElement().login
+            }
+
+            $('#' + $scope.setPwDialog.id).modal('show');
+        };
+
         $scope.deleteUser = function () {
             if (window.confirm('Are you sure?')) {
                 $http({
@@ -113,6 +150,10 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
                     loadUsers();
                 });
             }
+        };
+
+        $scope.gaga = function(val) {
+            console.log('gaga', val);
         };
 
         $scope.model = new SelectionModel(null, userComparator);

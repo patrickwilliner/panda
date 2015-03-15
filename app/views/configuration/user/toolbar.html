@@ -4,5 +4,10 @@
 	<button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolDelete()}" ng-click="deleteUser()">Delete</button>
 </div>
 
+<div class="btn-group btn-group-sm">
+    <button type="button" class="btn btn-default btn-sm" ng-class="{disabled : !enableToolSetPw()}" ng-click="showSetPwDialog()">Set Password</button>
+</div>
+
 <pd-dialog dialog="newUserDialog" form="form"></pd-dialog>
 <pd-dialog dialog="editUserDialog" form="form"></pd-dialog>
+<pd-dialog dialog="setPwDialog" form="form"></pd-dialog>

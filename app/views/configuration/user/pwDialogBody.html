@@ -1,0 +1,12 @@
+<form id="setPwForm" name="setPwForm" novalidate>
+    <div class="form-group" ng-class="{'has-error': setPwForm.password.$dirty && setPwForm.password.$invalid}">
+        <label for="password">New password</label>
+        <input type="password" class="form-control" id="password" name="password" ng-model="form.password" placeholder="Enter New Password" required>
+        <span class="help-block" ng-show="setPwForm.password.$dirty && setPwForm.password.$error.required">Field must not be empty.</span>
+    </div>
+    <div class="form-group" ng-class="{'has-error': setPwForm.confirmPassword.$dirty && setPwForm.confirmPassword.$invalid}">
+        <label for="confirmPassword">Confirm new password</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" ng-model="form.confirmPassword" pd-equals="form.password" required>
+        <span class="help-block" ng-show="setPwForm.confirmPassword.$dirty && setPwForm.confirmPassword.$invalid">Passwords does not match.</span>
+    </div>
+</form>

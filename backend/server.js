@@ -36,7 +36,10 @@ app.use(express.static(path.join(__dirname, '/../app')));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({secret: 'keyboard cat'}));
+app.use(session({
+    name: 'pandalinks',
+    secret: '*y%c--:17TzsSq+=$$$'
+}));
 
 //passport configuration
 app.use(passport.initialize());

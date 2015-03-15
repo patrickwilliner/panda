@@ -57,6 +57,10 @@ module.exports = function(app, passport, models) {
         api.deleteUser(req, res);
     });
 
+    app.put('/api/users/:id/setpw', isAuthenticated, function(req, res) {
+       api.setUserPassword(req, res);
+    });
+
     app.get('/api/bundles/:id', isAuthenticated, function(req, res) {
         api.getBundle(req, res);
     });
@@ -111,5 +115,9 @@ module.exports = function(app, passport, models) {
 
     app.get('/api/load_page_title', isAuthenticated, function(req, res) {
         api.loadPageTitle(req, res);
+    });
+
+    app.get('/api/session', isAuthenticated, function(req, res) {
+        api.getSession(req, res);
     });
 };
