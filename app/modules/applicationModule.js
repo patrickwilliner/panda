@@ -8,6 +8,7 @@ define([
 	'controllers/TagConfigurationController',
 	'controllers/BundleConfigurationController',
     'controllers/NavbarController',
+    'controllers/GuideController',
 	'services/BundleService',
 	'services/LinkService',
 	'services/SessionService',
@@ -32,6 +33,7 @@ define([
 		tagConfigurationController,
 		bundleConfigurationController,
         navbarController,
+        guideController,
 		bundleService,
 		linkService,
 		sessionService,
@@ -57,6 +59,7 @@ define([
 	module.controller('tagConfigurationController', tagConfigurationController);
 	module.controller('bundleConfigurationController', bundleConfigurationController);
     module.controller('navbarController', navbarController);
+    module.controller('guideController', guideController);
 
     // register services
 	module.factory('Bundle', bundleService);

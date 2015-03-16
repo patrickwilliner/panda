@@ -16,7 +16,8 @@ define(['interceptors/unauthorizedInterceptor'], function(unauthorizedIntercepto
 				controller: 'configurationController'
 			}).
 			when('/guide', {
-				templateUrl: 'views/guide/index.html'
+				templateUrl: 'views/guide/index.html',
+                controller: 'guideController'
 			}).
 			otherwise({
 				redirectTo: '/'

@@ -14,10 +14,10 @@
 	<div class="col-md-10">
 		<div class="animate-switch-container" ng-switch on="selection.tabItem">
       <div class="animate-switch" ng-switch-when="bundles" ng-controller="bundleConfigurationController">
-      	<span ng-include="'views/configuration/bundles.html'"></span>
+      	<span ng-include="'views/configuration/bundle/index.html'"></span>
       </div>
       <div class="animate-switch" ng-switch-when="tags" ng-controller="tagConfigurationController">
-				<span ng-include="'views/configuration/tags.html'"></span>
+				<span ng-include="'views/configuration/tag/index.html'"></span>
       </div>
       <div class="animate-switch" ng-switch-when="users" ng-controller="userConfigurationController">
 				<span ng-include="'views/configuration/user/index.html'"></span>

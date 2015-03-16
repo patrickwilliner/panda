@@ -108,8 +108,8 @@ define(['jquery'], function($) {
 
 
 	  $scope.newBundleDialog = {
-	  	bodyUrl: 'views/configuration/bundleDialogBody.html',
-	  	footerUrl: 'views/configuration/bundleDialogFooter.html',
+	  	bodyUrl: 'views/configuration/bundle/dialogBody.html',
+	  	footerUrl: 'views/configuration/bundle/dialogFooter.html',
 	  	id: 'newBundleDialog',
 	  	title: 'Create new bundle',
 	  	submit: function() {
@@ -118,8 +118,8 @@ define(['jquery'], function($) {
 	  };
 
 	  $scope.editBundleDialog = {
-	  	bodyUrl: 'views/configuration/bundleDialogBody.html',
-	  	footerUrl: 'views/configuration/bundleDialogFooter.html',
+	  	bodyUrl: 'views/configuration/bundle/dialogBody.html',
+	  	footerUrl: 'views/configuration/bundle/dialogFooter.html',
 	  	id: 'editBundleDialog',
 	  	title: 'Edit bundle',
 	  	submit: function() {
