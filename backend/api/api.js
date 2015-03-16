@@ -31,8 +31,9 @@ module.exports = function(models) {
         return normalized;
     }
 
-    function searchLinksByTag(tagLabel, res) {
+    function searchLinksByTag(tagLabel, req, res) {
         Link.find({
+            owner: new ObjectId(req.user._id),
             tags: tagLabel
         }).sort(
             '-createdAt'
@@ -46,21 +47,24 @@ module.exports = function(models) {
         });
     }
 
-    function searchLinksByText(searchText, res) {
+    function searchLinksByText(searchText, req, res) {
         Link.find({
-            $or: [{
-                label: {
-                    $regex: searchText,
-                    $options: 'is'
-                }},
-                {url: {
-                    $regex: searchText,
-                    $options: 'is'
-                }},
-                {tags: {
-                    $regex: searchText,
-                    $options: 'is'
-                }}
+            $and: [
+                {owner: new ObjectId(req.user._id)},
+                {$or: [{
+                    label: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }},
+                    {url: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }},
+                    {tags: {
+                        $regex: searchText,
+                        $options: 'is'
+                    }}
+                ]}
             ]
         }).sort(
             '-createdAt'
@@ -146,11 +150,14 @@ module.exports = function(models) {
             });
         },
 
+        /*
+         * Returns all bundles that belong to the logged in user.
+         */
         listBundles: function(req, res) {
             var promises = [];
             var extendedBundles = [];
 
-            Promise.resolve(Bundle.find().sort('order').execAsync().then(function(bundles) {
+            Promise.resolve(Bundle.find({owner: new ObjectId(req.user._id)}).sort('order').execAsync().then(function(bundles) {
                 bundles.forEach(function(bundle) {
                     promises.push(Link.countAsync({bundle: bundle._id}).then(function(count) {
                         bundle.linkCount = count;
@@ -191,6 +198,7 @@ module.exports = function(models) {
 
             Bundle.findOne().sort('-order').exec(function(err, maxBundle) {
                 bundle.order = maxBundle.order + 1;
+                bundle.owner = new ObjectId(req.user._id);
 
                 bundle.save(function(err) {
                     if (err) {
@@ -271,6 +279,7 @@ module.exports = function(models) {
         listTags: function(req, res) {
             // Model.collection -> use native connection
             Link.collection.aggregate([
+                {$match: {'owner': ObjectId(req.user._id)}},
                 {$unwind: '$tags'},
                 {$group : {
                     _id : '$tags',
@@ -280,8 +289,13 @@ module.exports = function(models) {
                     }
                 }},
                 {$sort: { _id: 1 } }
-            ], function(err, result) {
-                res.json(result);
+            ], function(err, tags) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(400);
+                } else {
+                    res.json(tags);
+                }
             });
         },
 
@@ -318,9 +332,9 @@ module.exports = function(models) {
             var tag = req.query.tag;
 
             if (tag) {
-                searchLinksByTag(tag, res);
+                searchLinksByTag(tag, req, res);
             } else {
-                searchLinksByText(searchText, res);
+                searchLinksByText(searchText, req, res);
             }
         },
 
@@ -329,6 +343,7 @@ module.exports = function(models) {
 
             setTimestamps(link);
             link.url = normalizeUrl(link.url);
+            link.owner = new ObjectId(req.user._id);
 
             link.save(function(err) {
                 if (err) {

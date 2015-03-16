@@ -11,6 +11,7 @@ module.exports = function(connection) {
 		url: String,
 		tags: [String],
 		bundle: ObjectId,
+        owner: ObjectId,
 		createdAt: Date,
 		modifiedAt: Date
 	});
