@@ -31,7 +31,7 @@ module.exports = function(app, passport, models) {
         res.render('layout/application');
     });
 
-    app.get('/about', authenticate, function(req, res){
+    app.get('/guide', authenticate, function(req, res){
         res.render('layout/application');
     });
 

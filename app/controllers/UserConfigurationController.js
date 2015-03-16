@@ -95,7 +95,7 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         $scope.setPwDialog = {
             bodyUrl: 'views/configuration/user/pwDialogBody.html',
             footerUrl: 'views/configuration/user/dialogFooter.html',
-            id: 'setPwDialog',
+            id: 'setUserPasswordDialog',
             title: 'Set Password',
             formId: 'setPwForm',
             submit: function () {
@@ -151,11 +151,6 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
                     loadUsers();
                 });
             }
-        };
-
-        // TODO
-        $scope.gaga = function(val) {
-            console.log('gaga', val);
         };
 
         $scope.model = new SelectionModel(null, userComparator);

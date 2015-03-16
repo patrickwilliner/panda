@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="navbarController">
 <div class="container-fluid">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -16,7 +16,7 @@
       <li ng-class="getNavClass('/configuration')"><a href="/configuration">Configuration</a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <li ng-class="getNavClass('/about')"><a href="/about">About</a></li>
+      <li ng-class="getNavClass('/guide')"><a href="/guide">Guide</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -38,6 +38,7 @@
     <div class="navbar-header navbar-right"><div style="padding: 15px 0;">Signed in as </div></div>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
-</nav>
 
 <pd-dialog dialog="setPwDialog" form="form"></pd-dialog>
+
+</nav>
