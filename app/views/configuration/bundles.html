@@ -6,9 +6,9 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-	  	<th width="1%">#</th>
-	  	<th>Label</th>
-	  	<th>Links</th>
+	  	    <th class="w_1px">#</th>
+            <th class="w_90">Label</th>
+            <th class="w_10 centered">Links</th>
 	  </tr>
 	</thead>
 	
@@ -16,7 +16,7 @@
 		<tr ng-class="{selected : bundle._id === selection.bundle._id}" ng-repeat="bundle in bundles" ng-click="selectBundle(bundle)">
 	  	<td>{{bundle.index}}</td>
 	  	<td>{{bundle.label}}</td>
-	  	<td>{{bundle.linkCount}}</td>
+	  	<td class="centered">{{bundle.linkCount}}</td>
 	  </tr>
 	</tbody>
 </table>

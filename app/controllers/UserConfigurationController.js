@@ -135,8 +135,9 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         $scope.showSetPwDialog = function() {
             $scope.form = {
                 _id: $scope.model.getSelectedElement()._id,
-                login: $scope.model.getSelectedElement().login
-            }
+                password: '',
+                confirmPassword: ''
+            };
 
             $('#' + $scope.setPwDialog.id).modal('show');
         };
@@ -152,6 +153,7 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
             }
         };
 
+        // TODO
         $scope.gaga = function(val) {
             console.log('gaga', val);
         };

@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb71e028-a1f9-440b-8507-5963f0078644" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/directives/equalsDirective.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/configuration/user/pwDialogBody.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ApplicationController.js" afterPath="$PROJECT_DIR$/app/controllers/ApplicationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/SessionService.js" afterPath="$PROJECT_DIR$/app/services/SessionService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/UserConfigurationController.js" afterPath="$PROJECT_DIR$/app/controllers/UserConfigurationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/api/api.js" afterPath="$PROJECT_DIR$/backend/api/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/applicationModule.js" afterPath="$PROJECT_DIR$/app/modules/applicationModule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/user/dialogBody.html" afterPath="$PROJECT_DIR$/app/views/configuration/user/dialogBody.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/user/dialogFooter.html" afterPath="$PROJECT_DIR$/app/views/configuration/user/dialogFooter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/css/app.css" afterPath="$PROJECT_DIR$/app/assets/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/bundles.html" afterPath="$PROJECT_DIR$/app/views/configuration/bundles.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/user/index.html" afterPath="$PROJECT_DIR$/app/views/configuration/user/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/navigation.html" afterPath="$PROJECT_DIR$/app/views/shared/navigation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/package.json" afterPath="$PROJECT_DIR$/backend/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/config/passport.js" afterPath="$PROJECT_DIR$/backend/config/passport.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/passwordDialog.html" afterPath="$PROJECT_DIR$/app/views/shared/passwordDialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/config/routes.js" afterPath="$PROJECT_DIR$/backend/config/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/server.js" afterPath="$PROJECT_DIR$/backend/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/user/toolbar.html" afterPath="$PROJECT_DIR$/app/views/configuration/user/toolbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/models/user.js" afterPath="$PROJECT_DIR$/backend/models/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/configuration/tags.html" afterPath="$PROJECT_DIR$/app/views/configuration/tags.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="panda.iws" />
@@ -42,10 +33,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="api.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/api/api.js">
+      <file leaf-file-name="ApplicationController.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ApplicationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="41" selection-start="4165" selection-end="4165" vertical-scroll-proportion="0.31141868" vertical-offset="2040" max-vertical-offset="6075">
+            <state line="25" column="16" selection-start="744" selection-end="744" vertical-scroll-proportion="0.29930797" vertical-offset="202" max-vertical-offset="1245">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserConfigurationController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/UserConfigurationController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="141" column="57" selection-start="4326" selection-end="4371" vertical-scroll-proportion="0.0" vertical-offset="1927" max-vertical-offset="2580">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toolbar.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/configuration/user/toolbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="779" selection-end="835" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="270">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/navigation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="56" selection-start="1763" selection-end="1763" vertical-scroll-proportion="-19.333334" vertical-offset="166" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -66,7 +84,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/controllers/BundleConfigurationController.js" />
         <option value="$PROJECT_DIR$/app/views/link/toolbar.html" />
-        <option value="$PROJECT_DIR$/app/views/configuration/user/index.html" />
         <option value="$PROJECT_DIR$/app/views/link/index.html" />
         <option value="$PROJECT_DIR$/app/controllers/BundleController.js" />
         <option value="$PROJECT_DIR$/app/lib/selection/model.js" />
@@ -76,22 +93,26 @@
         <option value="$PROJECT_DIR$/app/controllers/LinkController.js" />
         <option value="$PROJECT_DIR$/app/controllers/LinkDetailController.js" />
         <option value="$PROJECT_DIR$/app/views/configuration/user/dialogBody.html" />
-        <option value="$PROJECT_DIR$/app/views/shared/passwordDialog.html" />
         <option value="$PROJECT_DIR$/app/views/configuration/user/toolbar.html" />
         <option value="$PROJECT_DIR$/backend/package.json" />
         <option value="$PROJECT_DIR$/app/modules/applicationModule.js" />
         <option value="$PROJECT_DIR$/app/directives/equalsDirective.js" />
         <option value="$PROJECT_DIR$/app/views/configuration/user/dialogFooter.html" />
-        <option value="$PROJECT_DIR$/app/controllers/UserConfigurationController.js" />
         <option value="$PROJECT_DIR$/app/views/configuration/user/pwDialogBody.html" />
         <option value="$PROJECT_DIR$/backend/models/user.js" />
         <option value="$PROJECT_DIR$/backend/server.js" />
         <option value="$PROJECT_DIR$/backend/config/routes.js" />
         <option value="$PROJECT_DIR$/backend/config/passport.js" />
-        <option value="$PROJECT_DIR$/backend/api/api.js" />
-        <option value="$PROJECT_DIR$/app/controllers/ApplicationController.js" />
         <option value="$PROJECT_DIR$/app/services/SessionService.js" />
+        <option value="$PROJECT_DIR$/backend/api/api.js" />
+        <option value="$PROJECT_DIR$/app/assets/css/app.css" />
+        <option value="$PROJECT_DIR$/app/views/configuration/user/index.html" />
+        <option value="$PROJECT_DIR$/app/views/configuration/bundles.html" />
+        <option value="$PROJECT_DIR$/app/views/configuration/tags.html" />
+        <option value="$PROJECT_DIR$/app/views/shared/passwordDialog.html" />
         <option value="$PROJECT_DIR$/app/views/shared/navigation.html" />
+        <option value="$PROJECT_DIR$/app/controllers/UserConfigurationController.js" />
+        <option value="$PROJECT_DIR$/app/controllers/ApplicationController.js" />
       </list>
     </option>
   </component>
@@ -173,7 +194,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -187,11 +208,117 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="panda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,13 +431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="107" selection-start="369" selection-end="369" vertical-scroll-proportion="0.3478854" vertical-offset="0" max-vertical-offset="733">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/flagIconDirective.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="590">
@@ -349,13 +469,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/link/toolbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="68" selection-start="526" selection-end="526" vertical-scroll-proportion="0.15625" vertical-offset="0" max-vertical-offset="576">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/toolbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="803" selection-end="803" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="270">
           <folding />
         </state>
       </provider>
@@ -430,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/passwordDialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="102" selection-start="1871" selection-end="1879" vertical-scroll-proportion="0.7227357" vertical-offset="29" max-vertical-offset="570">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/equalsDirective.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="3" selection-start="632" selection-end="632" vertical-scroll-proportion="0.5968858" vertical-offset="0" max-vertical-offset="578">
@@ -507,23 +613,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/pwDialogBody.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="140" selection-start="353" selection-end="353" vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/dialogDirective.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="203" selection-end="203" vertical-scroll-proportion="0.25951558" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserConfigurationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="10" selection-start="4820" selection-end="4820" vertical-scroll-proportion="0.7404844" vertical-offset="1912" max-vertical-offset="2550">
           <folding />
         </state>
       </provider>
@@ -549,30 +641,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/SessionService.js">
+    <entry file="file://$PROJECT_DIR$/backend/api/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="41" selection-start="206" selection-end="206" vertical-scroll-proportion="0.1816609" vertical-offset="0" max-vertical-offset="578">
+        <state line="152" column="40" selection-start="4276" selection-end="4276" vertical-scroll-proportion="4.130435" vertical-offset="0" max-vertical-offset="6075">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ApplicationController.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="41" selection-start="271" selection-end="271" vertical-scroll-proportion="0.1816609" vertical-offset="0" max-vertical-offset="810">
+        <state line="48" column="22" selection-start="585" selection-end="585" vertical-scroll-proportion="0.6487889" vertical-offset="345" max-vertical-offset="1485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="347" selection-end="347" vertical-scroll-proportion="0.32490975" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/bundles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="27" selection-start="494" selection-end="494" vertical-scroll-proportion="0.48736462" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/tags.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="27" selection-start="341" selection-end="341" vertical-scroll-proportion="0.32490975" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/filters/domainFilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/toolbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/bundleDialogBody.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/bundleDialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/pwDialogBody.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="124" selection-start="541" selection-end="637" vertical-scroll-proportion="0.16635859" vertical-offset="0" max-vertical-offset="541">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/SessionService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="41" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/passwordDialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="16" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.4990758" vertical-offset="0" max-vertical-offset="541">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configuration/user/toolbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="779" selection-end="835" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="270">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/navigation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="42" selection-start="1255" selection-end="1255" vertical-scroll-proportion="0.50180507" vertical-offset="142" max-vertical-offset="720">
+        <state line="42" column="56" selection-start="1763" selection-end="1763" vertical-scroll-proportion="-19.333334" vertical-offset="166" max-vertical-offset="720">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/api/api.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserConfigurationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="41" selection-start="4165" selection-end="4165" vertical-scroll-proportion="0.31141868" vertical-offset="2040" max-vertical-offset="6075">
+        <state line="141" column="57" selection-start="4326" selection-end="4371" vertical-scroll-proportion="0.0" vertical-offset="1927" max-vertical-offset="2580">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ApplicationController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="16" selection-start="744" selection-end="744" vertical-scroll-proportion="0.29930797" vertical-offset="202" max-vertical-offset="1245">
           <folding />
         </state>
       </provider>

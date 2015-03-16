@@ -6,11 +6,11 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-	  	<th>Login</th>
-	  	<th>Given Name</th>
-	  	<th>Surname</th>
-	  	<th>Admin</th>
-	  	<th>Active</th>
+            <th class="w_20">Login</th>
+            <th class="w_30">Given Name</th>
+            <th class="w_30">Surname</th>
+            <th class="w_10 centered">Admin</th>
+            <th class="w_10 centered">Active</th>
 	  </tr>
 	</thead>
 	
@@ -19,8 +19,8 @@
 	  	<td>{{user.login}}</td>
 	  	<td>{{user.givenName}}</td>
 	  	<td>{{user.surname}}</td>
-	  	<td><pd-flag-icon value="user.admin"></pd-flag-icon></td>
-	  	<td><pd-flag-icon value="user.active"></pd-flag-icon></td>
+	  	<td class="centered"><pd-flag-icon value="user.admin"></pd-flag-icon></td>
+	  	<td class="centered"><pd-flag-icon value="user.active"></pd-flag-icon></td>
 	  </tr>
 	</tbody>
 </table>

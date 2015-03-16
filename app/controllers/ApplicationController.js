@@ -1,18 +1,30 @@
 define(['jquery'], function ($) {
     'use strict';
 
-    function applicationController($scope, $location, $window, Session) {
+    function applicationController($scope, $location, $window, $http, Session) {
         function init() {
             // set session user
             Session.getUser(function(user) {
                 $scope.sessionUser = user;
             });
 
-            // set search text
+            // init search text
             $scope.searchText = '';
 
-            // set key listeners
+            // init key listeners
             $scope.keyListeners = [];
+        }
+
+        function setPassword() {
+            $http({
+                method: 'put',
+                url: '/api/users/' + $scope.form._id + '/setpw',
+                data: {
+                    password: $scope.form.password
+                }
+            }).success(function () {
+                $('#' + $scope.setPwDialog.id).modal('hide');
+            });
         }
 
         $scope.registerKeyListener = function (listener) {
@@ -33,8 +45,25 @@ define(['jquery'], function ($) {
             $location.path('/links').search({search: $scope.searchText});
         };
 
+        $scope.setPwDialog = {
+            bodyUrl: 'views/configuration/user/pwDialogBody.html',
+            footerUrl: 'views/configuration/user/dialogFooter.html',
+            id: 'setPwDialog',
+            title: 'Change Password',
+            formId: 'setPwForm',
+            submit: function () {
+                setPassword();
+            }
+        };
+
         $scope.showPwDialog = function () {
-            $('#pwDialog').modal('show');
+            $scope.form = {
+                _id: $scope.sessionUser._id,
+                password: '',
+                confirmPassword: ''
+            };
+
+            $('#' + $scope.setPwDialog.id).modal('show');
         };
 
         $scope.logout = function () {
@@ -44,6 +73,6 @@ define(['jquery'], function ($) {
         init();
     }
 
-    applicationController.$inject = ['$scope', '$location', '$window', 'Session'];
+    applicationController.$inject = ['$scope', '$location', '$window', '$http', 'Session'];
     return applicationController;
 });

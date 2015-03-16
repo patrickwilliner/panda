@@ -44,3 +44,51 @@ table .selected {
 	background-color: #337ab7 !important;
 	color: white;
 }
+
+.centered {
+    text-align: center;
+}
+
+.w_10 {
+    width: 10%;
+}
+
+.w_20 {
+    width: 20%;
+}
+
+.w_30 {
+    width: 30%;
+}
+
+.w_40 {
+    width: 40%;
+}
+
+.w_50 {
+    width: 50%;
+}
+
+.w_60 {
+    width: 60%;
+}
+
+.w_70 {
+    width: 70%;
+}
+
+.w_80 {
+    width: 80%;
+}
+
+.w_90 {
+    width: 90%;
+}
+
+.w_100 {
+    width: 100%;
+}
+
+.w_1px {
+    width: 1px;
+}

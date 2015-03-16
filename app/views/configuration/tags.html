@@ -2,15 +2,15 @@
 	<caption>Listing {{tags.length}} tags</caption>
 	<thead>
 		<tr>
-	  	<th>Label</th>
-	  	<th>Links</th>
+            <th class="w_90">Label</th>
+            <th class="w_10 centered">Links</th>
 	  </tr>
 	</thead>
 	
 	<tbody>
 		<tr ng-repeat="tag in tags">
 	  	<td><a href="/links/?tag={{tag.label}}">{{tag.label}}</a></td>
-	  	<td>{{tag.linkCount}}</td>
+	  	<td class="centered">{{tag.linkCount}}</td>
 	  </tr>
 	</tbody>
 </table>
