@@ -78,6 +78,23 @@ module.exports = function(models) {
         });
     }
 
+    function deleteBundle(bundleId) {
+        Link.find(
+            {bundle: new ObjectId(bundleId)}
+        )
+
+        return Bundle.findById(id, function (err, bundle) {
+            return bundle.remove(function (err) {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        });
+    }
+
     return {
         listUsers: function(req, res) {
             User.find(function(err, users) {

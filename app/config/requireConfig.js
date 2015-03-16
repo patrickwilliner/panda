@@ -1,3 +1,6 @@
+/*
+ * Requirejs configuration.
+ */
 (function() {
 	'use strict';
 
@@ -31,7 +34,9 @@
 		]
 	});
 
-
+    /*
+     * Application bootstrap.
+     */
 	require(['angular', 'modules/applicationModule'],
 	  function(angular) {
 	    angular.bootstrap(document, ['pandaApp']);

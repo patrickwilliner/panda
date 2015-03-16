@@ -7,23 +7,31 @@ module.exports = function(app, passport, models) {
       if (req.isAuthenticated()) {
         return next();
       } else {
-        res.redirect('/login');
+        res.send(401);
       }
     };
 
-    app.get('/', isAuthenticated, function(req, res){
+    var authenticate = function (req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        } else {
+            res.redirect('/login');
+        }
+    };
+
+    app.get('/', authenticate, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/links', isAuthenticated, function(req, res){
+    app.get('/links', authenticate, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/configuration', isAuthenticated, function(req, res){
+    app.get('/configuration', authenticate, function(req, res){
         res.render('layout/application');
     });
 
-    app.get('/about', isAuthenticated, function(req, res){
+    app.get('/about', authenticate, function(req, res){
         res.render('layout/application');
     });
 

@@ -1,3 +1,6 @@
+/**
+ * Directive which will render an icon for the given boolean value.
+ */
 define([], function() {
 	function pdFlagIconDirective() {
 		return {

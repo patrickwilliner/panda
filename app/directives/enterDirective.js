@@ -1,3 +1,7 @@
+/**
+ * Directive that can be used with input fields. The directive defines a function which is called when the user
+ * pressess <i>ENTER</i> on that input field.
+ */
 define([], function() {
 	'use strict';
 	

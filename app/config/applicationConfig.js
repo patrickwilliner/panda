@@ -1,5 +1,8 @@
-define([], function() {
-	function applicationConfig($routeProvider, $locationProvider) {
+/*
+ * Angular configuration.
+ */
+define(['interceptors/unauthorizedInterceptor'], function(unauthorizedInterceptor) {
+	function applicationConfig($routeProvider, $locationProvider, $httpProvider) {
 		$routeProvider.
 			when('/', {
 				templateUrl: 'views/home/index.html'
@@ -21,8 +24,11 @@ define([], function() {
 
 		// pretty urls - no hashs in url
 		$locationProvider.html5Mode(true);
+
+        // register interceptors
+        $httpProvider.interceptors.push(unauthorizedInterceptor);
 	}
 
-	applicationConfig.$inject = ['$routeProvider', '$locationProvider'];
+	applicationConfig.$inject = ['$routeProvider', '$locationProvider', '$httpProvider'];
 	return applicationConfig;
 });

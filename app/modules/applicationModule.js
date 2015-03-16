@@ -46,6 +46,7 @@ define([
 
 	module.config(applicationConfig);
 
+    // register controllers
 	module.controller('applicationController', applicationController);
 	module.controller('configurationController', configurationController);
 	module.controller('linkController', linkController);
@@ -54,12 +55,14 @@ define([
 	module.controller('tagConfigurationController', tagConfigurationController);
 	module.controller('bundleConfigurationController', bundleConfigurationController);
 
+    // register services
 	module.factory('Bundle', bundleService);
 	module.factory('Link', linkService);
 	module.factory('Session', sessionService);
 	module.factory('Tag', tagService);
 	module.factory('User', userService);
 
+    // register directives
 	module.directive('pdBundle', bundleDirective);
 	module.directive('pdDialog', dialogDirective);
 	module.directive('pdEnter', enterDirective);
@@ -67,5 +70,6 @@ define([
 	module.directive('pdLinkDialog', linkDialogDirective);
     module.directive('pdEquals', equalsDirective);
 
+    // register filters
 	module.filter('pdDomain', domainFilter);
 });

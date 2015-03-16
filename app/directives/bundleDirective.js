@@ -1,3 +1,6 @@
+/**
+ * Directive that renders a bundle.
+ */
 define([], function() {
 	'use strict';
 

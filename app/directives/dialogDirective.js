@@ -1,3 +1,6 @@
+/**
+ * Directive that renders a dialog (i.e. bootstrap modal).
+ */
 define([], function() {
 	'use strict';
 	

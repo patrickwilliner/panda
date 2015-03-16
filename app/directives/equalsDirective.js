@@ -1,3 +1,7 @@
+/**
+ * Directive which is used for form validation. The directive defines a certain model field which must be
+ * equal to this field's model value.
+ */
 define([], function() {
     'use strict';
 
