@@ -99,6 +99,7 @@ define([], function () {
         for (var i = 0; i < this.elements.length; i++) {
             if (this.comparator(element, this.elements[i])) {
                 this.selectIndex(i);
+                return;
             }
         }
 
