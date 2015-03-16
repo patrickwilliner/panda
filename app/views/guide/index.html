@@ -1,27 +1,25 @@
 <div class="container">
-    <ul class="nav nav-pills nav-stacked col-md-2">
-        <li>
-            <a href="">Overview</a>
-        </li>
-        <li>
-            <a href="">Link Organisation</a>
-        </li>
-        <li>
-            <a href="">User Management</a>
-        </li>
-    </ul>
+    <div id="left-nav" class="col-md-2">
+        <ul class="nav nav-pills nav-stacked ">
+            <li ng-class="{active: section === '#overview' || section === ''}">
+                <a href="#overview">Overview</a>
+            </li>
+            <li ng-class="{active: section === '#link_organisation'}">
+                <a href="#link_organisation">Link Organisation</a>
+            </li>
+            <li ng-class="{active: section === '#user_management'}">
+                <a href="#user_management">User Management</a>
+            </li>
+        </ul>
+    </div>
 
     <div class="col-md-10">
-        <h3>Overview</h3>
+        <h3 id="overview">Overview</h3>
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices libero vitae fermentum malesuada.
             Duis ex sem, sollicitudin a quam ut, convallis consectetur turpis. Phasellus at eros quis libero iaculis
-            convallis. Curabitur enim quam, feugiat quis placerat eget, eleifend nec tellus. Integer consectetur,
-            nulla ut vulputate laoreet, nunc enim viverra mauris, vitae faucibus ipsum est eget nisl. Donec mattis
-            eros et molestie scelerisque. Morbi ultrices condimentum ipsum, ut condimentum turpis vulputate at.
-            Nullam pulvinar dolor eget diam pellentesque, et egestas velit lobortis. Nullam eget ex pretium, dapibus
-            mi at, feugiat ipsum. Aliquam volutpat nulla et mattis tincidunt. Mauris in varius lacus. Duis non purus
+            convallis. Aliquam volutpat nulla et mattis tincidunt. Mauris in varius lacus. Duis non purus
             tortor. Fusce pellentesque vestibulum erat eu finibus. Sed urna quam, pulvinar eget venenatis ut, bibendum
             ac dui. Morbi augue enim, laoreet eu ultrices et, ullamcorper nec lectus.
             <br/><br/>
@@ -29,9 +27,7 @@
             in, pulvinar arcu. Sed at mi viverra, congue enim a, laoreet tortor. Cum sociis natoque penatibus et magnis
             dis parturient montes, nascetur ridiculus mus. Nam sodales nec turpis nec consequat. Curabitur pellentesque
             nulla vel velit rutrum, sit amet sollicitudin quam condimentum. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Proin at ligula a neque eleifend aliquet. Etiam eu
-            dolor a nisi fermentum dignissim. Aliquam erat volutpat. Suspendisse et gravida nulla. Ut euismod quam
-            purus, pretium tristique nisl fermentum ut. Nam vel libero ultrices, porttitor velit id, condimentum purus.
+            torquent per conubia nostra, per inceptos himenaeos.
         </p>
 
         <h3 id="link_organisation">Link Organisation</h3>
@@ -56,7 +52,7 @@
             purus, pretium tristique nisl fermentum ut. Nam vel libero ultrices, porttitor velit id, condimentum purus.
         </p>
 
-        <h3>User Management</h3>
+        <h3 id="user_management">User Management</h3>
 
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices libero vitae fermentum malesuada.

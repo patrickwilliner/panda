@@ -1,14 +1,21 @@
 define(['jquery'], function ($) {
     'use strict';
 
-    function guideController() {
+    function guideController($scope) {
         function init() {
-            $('body').scrollspy({ target: '#navbar-example' })
+            //$('body').scrollspy({ target: '#left-nav' })
         }
+
+        // $scope.section is used for left navigation which depends on location.hash
+        $scope.$watch(function () {
+            return location.hash
+        }, function (value) {
+            $scope.section = value;
+        });
 
         init();
     }
 
-    guideController.$inject = [];
+    guideController.$inject = ['$scope'];
     return guideController;
 });
