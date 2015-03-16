@@ -3,6 +3,7 @@
 module.exports = function(mongoose) {
 
     var dbURI = 'mongodb://localhost:27017/panda';
+    dbURI = 'mongodb://app_connection:app_connection@ds043348.mongolab.com:43348/panda_links'
     var connection = mongoose.createConnection(dbURI,{ server: { poolSize: 5 } });
 
     // When successfully connected
