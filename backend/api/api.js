@@ -78,6 +78,7 @@ module.exports = function(models) {
         });
     }
 
+    // todo implement -> also delete all link associated with bundle
     function deleteBundle(bundleId) {
         Link.find(
             {bundle: new ObjectId(bundleId)}
@@ -93,6 +94,11 @@ module.exports = function(models) {
                 }
             });
         });
+    }
+
+    // todo implement -> also delete all bundles and links associated with user
+    function deleteUser(userId) {
+
     }
 
     return {
