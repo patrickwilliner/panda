@@ -14,3 +14,5 @@ Used technologies frontend:
 - angular
 - require.js
 - twitter bootstrap
+
+Demo app can be found here: [https://panda-links-us.herokuapp.com](https://panda-links-us.herokuapp.com)
