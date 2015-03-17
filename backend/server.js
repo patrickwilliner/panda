@@ -14,8 +14,8 @@ var bodyParser   = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
 
-var env = 'dev';
-var config = require('./config/profiles/' + env);
+var env = process.argv[2] || 'dev';
+var config = require('./config/profiles/' + env)();
 
 var port     = process.env.PORT || 3000;
 var ip       = process.env.IP || 'localhost';
