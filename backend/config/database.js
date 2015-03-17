@@ -1,9 +1,8 @@
 'use strict';
 
-module.exports = function(mongoose) {
+module.exports = function(mongoose, config) {
 
-    var dbURI = 'mongodb://localhost:27017/panda';
-    dbURI = 'mongodb://app_connection:app_connection@ds043348.mongolab.com:43348/panda_links'
+    var dbURI = config.db.url;
     var connection = mongoose.createConnection(dbURI,{ server: { poolSize: 5 } });
 
     // When successfully connected
