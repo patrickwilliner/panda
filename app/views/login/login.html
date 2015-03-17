@@ -12,16 +12,13 @@
 
 <body>
   <div class="container">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Remarks</h3>
-      </div>
-      <div class="panel-body">
-        This is a test application which is still under development. Focus was to learn a couple of technologies. Therefore the
-        application was not tested elaborately. The application uses the free heroku hosting option. Hence it's pretty slow. Sometimes
-        a page reload works wonders ;-)<br><br>
-        Test user credentials: <b>login=demo password=demo</b>
-      </div>
+    <div class="alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Remarks:</strong><br><br>
+      This is a test application which is still under development. Focus was to learn a couple of technologies. Therefore the
+      application was not tested elaborately. The application uses the free heroku hosting option. Hence it's pretty slow. Sometimes
+      a page reload works wonders ;-)<br><br>
+      Test user credentials: <b>login=demo password=demo</b>
     </div>
 
     <form class="form-signin" method="post">
@@ -33,6 +30,9 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
   </div> <!-- /container -->
+  
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
