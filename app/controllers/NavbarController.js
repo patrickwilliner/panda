@@ -18,6 +18,10 @@ define(['jquery'], function ($) {
             $window.location.href = '/logout';
         }
 
+        $scope.enableSetPw = function() {
+            return !$scope.sessionUser.system;
+        };
+
         $scope.getNavClass = function (path) {
             return $location.path().indexOf(path) === 0 ? 'active' : '';
         };

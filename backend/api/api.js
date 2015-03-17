@@ -219,8 +219,13 @@ module.exports = function(models) {
             var bundle = new Bundle(req.body);
             setTimestamps(bundle);
 
-            Bundle.findOne().sort('-order').exec(function(err, maxBundle) {
-                bundle.order = maxBundle.order + 1;
+            Bundle.findOne({owner: new ObjectId(req.user._id)}).sort('-order').exec(function(err, maxBundle) {
+                if (maxBundle) {
+                    bundle.order = maxBundle.order + 1;
+                } else {
+                    bundle.order = 1;
+                }
+                
                 bundle.owner = new ObjectId(req.user._id);
 
                 bundle.save(function(err) {

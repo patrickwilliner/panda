@@ -61,7 +61,7 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         };
 
         $scope.enableToolEdit = function () {
-            return $scope.model.hasSelection();
+            return $scope.model.hasSelection() && !$scope.model.getSelectedElement().system;
         };
 
         $scope.enableToolDelete = function () {
@@ -69,7 +69,7 @@ define(['jquery', 'lib/selection/model'], function ($, SelectionModel) {
         };
 
         $scope.enableToolSetPw = function () {
-            return $scope.model.hasSelection();
+            return $scope.model.hasSelection() && !$scope.model.getSelectedElement().system;
         };
 
         $scope.newUserDialog = {
