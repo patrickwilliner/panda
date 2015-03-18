@@ -26,11 +26,12 @@ var connection = require('./config/database')(mongoose, config);
 var models = require('./models/models')(connection);
 require('./config/passport')(passport, models);
 
-//var accessLogStream = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
+console.log('dir', __dirname);
+var accessLogStream = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
 
 // set up express application
 app.set('port', port);
-//app.use(morgan('combined', {stream: accessLogStream}));
+app.use(morgan('combined', {stream: accessLogStream}));
 app.use(cookieParser());
 app.set('view engine', 'html'); // set up html for templating
 app.engine('.html', require('ejs').__express);
