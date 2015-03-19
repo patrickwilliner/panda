@@ -6,14 +6,12 @@ var passport     = require('passport');
 var flash        = require('connect-flash');
 var http         = require('http');
 var path         = require('path');
-var uuid         = require('node-uuid');
 var morgan       = require('morgan');
 var fs           = require('fs');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
-
 
 var env = process.argv[2] || 'dev';
 var config = require('./config/profiles/' + env)();
@@ -27,12 +25,14 @@ var connection = require('./config/database')(mongoose, config);
 var models = require('./models/models')(connection);
 require('./config/passport')(passport, models);
 
-console.log('dir', __dirname);
-//var accessLogStream = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
+// access log
+if (env !== 'heroku') {
+	var accessLogStream = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
+	app.use(morgan('combined', {stream: accessLogStream}));	
+}
 
 // set up express application
 app.set('port', port);
-//app.use(morgan('combined', {stream: accessLogStream}));
 app.use(cookieParser());
 app.set('view engine', 'html'); // set up html for templating
 app.engine('.html', require('ejs').__express);
@@ -53,13 +53,10 @@ app.use(passport.session());
 require('./config/routes.js')(app, passport, models);
 
 // development only
-if (app.get('env') === 'development') {
+if (env !== 'heroku') {
     app.use(require('errorhandler'));
-}
-
-// production only
-if (app.get('env') === 'production') {
-    // TODO
+} else {
+	// TODO
 }
 
 var server = http.createServer(app).listen(app.get('port'), function () {
